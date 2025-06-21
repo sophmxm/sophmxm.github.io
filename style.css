@@ -2,6 +2,22 @@
 @import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
 
+:root {
+    --bg-col-1: #fcfaee;
+    --bg-col-2: #e6d9c8;
+    --bg-col-3: #c2a070;
+    --txt-col-1: #682b17;
+    --txt-col-2: #c2a070;
+    --acc-col-1: #fe5d26;
+
+    --bg-col-1: #f8f7f4;
+    --bg-col-2: #e5baff;
+    --bg-col-3: #9046e4;
+    --txt-col-1: #5f4949;
+    --txt-col-2: #bd9191;
+    --acc-col-1: #b692ff;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -11,8 +27,8 @@ body {
     padding: 0;
     position: relative;
     overflow: hidden;
-    background-color: #fcfaee;
-    color: #682b17;
+    background-color: var(--bg-col-1);
+    color: var(--txt-col-1);
     font-family: "PT Serif", serif;
     font-size: 18px;
 }
@@ -35,7 +51,7 @@ h3 {
     font-family: "Gaegu", serif;
     font-weight: bold;
     text-transform: lowercase;
-    color: #fe5d26;
+    color: var(--acc-col-1);
     margin: 0;
     text-align: center;
 }
@@ -55,7 +71,7 @@ h3 {
 
 p.sub-title {
     margin: 0;
-    color: #c2a070;
+    color: var(--txt-col-2);
 }
 
 header {
@@ -75,18 +91,21 @@ div#nav-dots {
     flex-direction: column;
     align-items: center;
     gap: 10px;
+    min-width: 18px;
 
     .dot {
         height: 10px;
         width: 10px;
-        background-color: #e6d9c8;
+        background-color: var(--bg-col-2);
         border-radius: 50%;
+        transition: 150ms, 350ms, 350ms;
+        transition-property: background-color, height, width;
 
         &.active {
             height: 18px;
             width: 18px;
             margin: 5px 0;
-            background-color: #c2a070;
+            background-color: var(--bg-col-3);
         }
     }
 }
@@ -112,5 +131,4 @@ section:has(>h1)+section {
 }
 
 section.spacer {
-    background-color: pink;
 }
