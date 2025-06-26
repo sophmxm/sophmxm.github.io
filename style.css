@@ -12,7 +12,7 @@
 
     --bg-col-1: #f8f7f4;
     --bg-col-2: #e5baff;
-    --bg-col-3: #9046e4;
+    --bg-col-3: #aa62fc;
     --txt-col-1: #5f4949;
     --txt-col-2: #bd9191;
     --acc-col-1: #b692ff;
@@ -37,7 +37,6 @@ main {
     position: relative;
     width: 100vw;
     height: 100vh;
-    /* background: linear-gradient(#fcfaee, #ebdac3); */
     overflow-x: hidden;
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
@@ -71,7 +70,10 @@ h3 {
 
 p.sub-title {
     margin: 0;
+    font-family: "Gaegu", serif;
     color: var(--txt-col-2);
+    font-size: 22px;
+    text-transform: lowercase;
 }
 
 header {
@@ -130,5 +132,51 @@ section:has(>h1)+section {
     }
 }
 
-section.spacer {
+section:nth-of-type(4) ul {
+    list-style: none;
+    padding-inline-start: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    align-items: flex-start;
+    margin: 30px 0;
+
+    >li>a {
+        text-decoration: none;
+        color: inherit;
+        position: relative;
+        padding-bottom: 3px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        overflow-x: hidden;
+        transition: 350ms;
+
+        >iconify-icon {
+            margin-bottom: -2px;
+        }
+
+        &:hover {
+            color: var(--txt-col-2);
+        }
+
+        &::after {
+            content: "";
+            height: 2px;
+            width: calc(100% - 28px);
+            background-color: var(--txt-col-1);
+            border-radius: 1px;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            transform: scaleX(0);
+            transform-origin: 0% 100%;
+            transition: 500ms;
+        }
+
+        &:hover::after {
+            transform: scaleX(1);
+            background-color: var(--txt-col-2);
+        }
+    }
 }
