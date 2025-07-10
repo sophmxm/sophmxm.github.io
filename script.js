@@ -15,6 +15,11 @@ function createNavDots() {
 		dot.classList.add("dot");
 		nav_dots.appendChild(dot);
 
+		// On click dot, scroll to section
+		dot.onclick = () => {
+			main_sections[i].scrollIntoView({ behavior: "smooth", block: "center" });
+		};
+
 		// Add element to array
 		nav_dots_list.push(dot);
 	}
@@ -40,7 +45,7 @@ main.addEventListener("scroll", setActiveNavDot);
 // Staggered reveal content effect
 function revealContent() {
 	for (let i = 0; i < main.children.length; i++) {
-		console.log(main.children[i].children)
+		console.log(main.children[i].children);
 		for (let j = 0; j < main.children[i].children.length; j++) {
 			// Add animation delay effect to each section in content
 			main.children[i].children[j].style.animationDelay = `calc(350ms + ${j * 150}ms)`;
