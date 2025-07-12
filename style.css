@@ -12,6 +12,7 @@
 
     --bg-col-1: #f8f7f4;
     --bg-col-2: #e5baff;
+    --bg-col-2-5: #cb92ee;
     --bg-col-3: #aa62fc;
     --txt-col-1: #5f4949;
     --txt-col-2: #bd9191;
@@ -95,12 +96,53 @@ div#nav-dots {
     gap: 2px;
     min-width: 18px;
 
+    >div {
+        position: relative;
+    }
+
+    >div>div:nth-of-type(2) {
+        visibility: hidden;
+        opacity: 0;
+        color: var(--txt-col-2);
+        position: absolute;
+        top: 50%;
+        left: 35px;
+        transform: translateY(calc(-50% - 2px));
+        width: max-content;
+        font-size: 18px;
+        font-family: "Gaegu", serif;
+        font-weight: normal;
+        transition: 350ms;
+    }
+
+    >div:has(>.dot.active)>div:nth-of-type(2) {
+        font-weight: bold;
+        left: 45px;
+    }
+
+    &:hover>div>div:nth-of-type(2) {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    >div:hover>div:nth-of-type(2) {
+        font-size: 20px;
+        color: var(--txt-col-1);
+        font-weight: bold;
+    }
+
     >div:has(>.dot) {
         padding: 6px;
         cursor: pointer;
 
         &:has(>.dot.active) {
             margin: 2px 0;
+        }
+
+        &:hover:not(:has(>.active)) .dot {
+            transition: 350ms;
+            transition-property: background-color;
+            background-color: var(--bg-col-2-5);
         }
     }
 
@@ -143,7 +185,7 @@ div#nav-dots {
 
             iconify-icon {
                 visibility: visible;
-                font-size: 24px;
+                font-size: 28px;
             }
         }
     }

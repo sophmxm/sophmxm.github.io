@@ -11,12 +11,28 @@ console.log(main_sections);
 function createNavDots() {
 	// For each section in main, create navigation dot
 	for (let i = 0; i < main_sections.length; i++) {
+		// Create dot area
 		let dot_area = document.createElement("div");
 		nav_dots.appendChild(dot_area);
 
+		// Create dot
 		let dot = document.createElement("div");
 		dot.classList.add("dot");
 		dot_area.appendChild(dot);
+
+		// Create text header that appears on hover
+		let text = document.createElement("div");
+		// Get the first header in the section
+		for (let j = 0; j < main_sections[i].children.length; j++) {
+			if (main_sections[i].children[j].tagName == "H1") {
+				text.innerText = main_sections[i].children[j].innerText;
+				j++;
+			} else if (main_sections[i].children[j].tagName == "H2") {
+				text.innerText = main_sections[i].children[j].innerText;
+				j++;
+			}
+		}
+		dot_area.appendChild(text);
 
 		// On click dot, scroll to section
 		dot_area.onclick = () => {
@@ -75,7 +91,6 @@ main.addEventListener("scroll", setActiveNavDot);
 // Staggered reveal content effect
 function revealContent() {
 	for (let i = 0; i < main.children.length; i++) {
-		console.log(main.children[i].children);
 		for (let j = 0; j < main.children[i].children.length; j++) {
 			// Add animation delay effect to each section in content
 			main.children[i].children[j].style.animationDelay = `calc(350ms + ${j * 150}ms)`;
