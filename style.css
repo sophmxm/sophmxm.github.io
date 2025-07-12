@@ -92,24 +92,96 @@ div#nav-dots {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 2px;
     min-width: 18px;
+
+    >div:has(>.dot) {
+        padding: 6px;
+        cursor: pointer;
+
+        &:has(>.dot.active) {
+            margin: 2px 0;
+        }
+    }
 
     .dot {
         height: 10px;
         width: 10px;
         background-color: var(--bg-col-2);
+        color: var(--bg-col-2);
         border-radius: 50%;
         transition: 150ms, 350ms, 350ms;
         transition-property: background-color, height, width;
-        cursor: pointer;
+        display: flex;
+        align-items: center;
+
+        &.has-icon {
+            transition: none;
+        }
+
+        iconify-icon {
+            color: inherit;
+            visibility: hidden;
+            font-size: 18px;
+            transition: 350ms, 350ms;
+            transition-property: font-size, color;
+        }
 
         &.active {
             height: 18px;
             width: 18px;
             margin: 5px 0;
             background-color: var(--bg-col-3);
+            color: var(--bg-col-3);
         }
+
+        &.active.has-icon {
+            height: 20px;
+            background-color: transparent;
+            display: flex;
+            justify-content: center;
+
+            iconify-icon {
+                visibility: visible;
+                font-size: 24px;
+            }
+        }
+    }
+}
+
+@keyframes nav-dots-shrink-down {
+    from {
+        transform: translateY(8px);
+        height: 18px;
+        width: 12px;
+        background-color: var(--bg-col-3);
+        border-radius: 42%;
+    }
+
+    to {
+        transform: translateY(0);
+        height: 10px;
+        width: 10px;
+        background-color: var(--bg-col-2);
+        border-radius: 50%;
+    }
+}
+
+@keyframes nav-dots-shrink-up {
+    from {
+        transform: translateY(-5px);
+        height: 15px;
+        width: 12px;
+        background-color: var(--bg-col-3);
+        border-radius: 45%;
+    }
+
+    to {
+        transform: translateY(0);
+        height: 10px;
+        width: 10px;
+        background-color: var(--bg-col-2);
+        border-radius: 50%;
     }
 }
 
