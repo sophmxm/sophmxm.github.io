@@ -82,15 +82,31 @@ header {
     position: fixed;
     top: 0;
     left: 0;
-    height: 100vh;
+    height: calc(100vh - 2vh - 20px);
     padding: calc(1vh + 10px) calc(2vw + 15px);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     z-index: 5;
+
+    button {
+        color: var(--bg-col-3);
+        border: 1px solid var(--bg-col-3);
+        border-radius: 5px;
+        background-color: var(--bg-col-1);
+        padding: 5px;
+        aspect-ratio: 1/1;
+        cursor: pointer;
+        transition: 350ms;
+
+        &:hover {
+            color: var(--bg-col-1);
+            background-color: var(--bg-col-3);
+        }
+    }
 }
 
-div#nav-dots {
+#nav-dots {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -235,6 +251,10 @@ main>section {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+main>section.hidden {
+    display: none;
 }
 
 #one-page>* {

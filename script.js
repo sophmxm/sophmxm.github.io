@@ -4,10 +4,14 @@ let main = document.getElementsByTagName("main")[0];
 
 let nav_dots = document.getElementById("nav-dots");
 let nav_dots_list = [];
-let main_sections = document.querySelectorAll("main>section");
+let main_sections = document.querySelectorAll("main>section:not(.hidden)");
 
 // Create the navigation section dots
 function createNavDots() {
+	// Clear nav dots
+	nav_dots_list = [];
+	nav_dots.innerText = "";
+
 	// For each section in main, create navigation dot
 	for (let i = 0; i < main_sections.length; i++) {
 		// Create dot area
@@ -52,6 +56,7 @@ function createNavDots() {
 			dot.appendChild(icon);
 		}
 	}
+	setActiveNavDot();
 }
 
 // Set active navigation section dot
@@ -150,8 +155,44 @@ function createAboutMeText() {
 	});
 }
 
+function checkIsOnePage() {
+	// Default value
+	let one_page = false;
+
+	// One page section
+	let one_page_section = document.getElementById("one-page");
+
+	// Check local storage
+	if (localStorage.getItem("isOnePage") == null) localStorage.setItem("isOnePage", false);
+	else if (localStorage.getItem("isOnePage") == "true") one_page = true;
+
+	// Set hidden class to sections
+	if (one_page === false) {
+		one_page_section.classList.add("hidden");
+		document.querySelectorAll("main>section:not(#one-page)").forEach((section) => section.classList.remove("hidden"));
+	} else {
+		one_page_section.classList.remove("hidden");
+		document.querySelectorAll("main>section:not(#one-page)").forEach((section) => section.classList.add("hidden"));
+	}
+
+	// Update main sections array
+	main_sections = document.querySelectorAll("main>section:not(.hidden)");
+}
+
+function toggleOnePage() {
+	let btn = document.getElementById("one-page-toggle-btn");
+
+	// Set local storage
+	if (localStorage.getItem("isOnePage") == "true") localStorage.setItem("isOnePage", false);
+	else localStorage.setItem("isOnePage", true);
+
+	checkIsOnePage();
+	createNavDots();
+}
+
+checkIsOnePage();
+
 createContactLinks();
 createAboutMeText();
 createNavDots();
-setActiveNavDot();
 revealContent();
