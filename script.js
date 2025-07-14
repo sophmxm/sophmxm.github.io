@@ -163,6 +163,16 @@ function scrollToTop() {
 	});
 }
 
+function revealScrollToTopBtn() {
+	let btn = document.getElementById("scroll-to-top-btn");
+	if (main.scrollTop > 100) btn.classList.remove("hidden");
+	else document.getElementById("scroll-to-top-btn").classList.add("hidden");
+}
+
+main.addEventListener("scroll", () => {
+	revealScrollToTopBtn();
+});
+
 // Check and set to one page or multiple section scroll
 function checkIsOnePage() {
 	// Default value set to multiple section scroll
@@ -269,6 +279,7 @@ function createTextBox(element) {
 	});
 }
 
+revealScrollToTopBtn();
 checkIsOnePage();
 checkIsDarkMode();
 createContactLinks();

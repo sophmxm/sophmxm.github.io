@@ -26,6 +26,7 @@
 
 :root[data-mode="dark"] {
     --bg-col-1: #22211f;
+    --bg-col-1: #1f1f22;
     --txt-col-1: #ebdbdb;
 }
 
@@ -100,14 +101,16 @@ header {
     z-index: 5;
 
     button {
+        position: relative;
         color: var(--bg-col-3);
         border: 1px solid var(--bg-col-3);
         border-radius: 5px;
         background-color: var(--bg-col-1);
         padding: 5px;
+        height: 30px;
         aspect-ratio: 1/1;
         cursor: pointer;
-        transition: 350ms;
+        transition: 500ms ease-in-out;
 
         &:hover {
             color: var(--bg-col-1);
@@ -115,8 +118,40 @@ header {
         }
 
         &:active {
+            color: var(--bg-col-3);
             background-color: var(--bg-col-2);
         }
+    }
+
+    #nav-dots>div>div:nth-of-type(2), >div:last-of-type>button>div {
+        visibility: hidden;
+        opacity: 0;
+        color: var(--txt-col-2);
+        position: absolute;
+        top: 50%;
+        left: 35px;
+        transform: translateY(calc(-50% - 2px));
+        width: max-content;
+        font-size: 18px;
+        font-family: "Gaegu", serif;
+        font-weight: normal;
+        transition: 350ms;
+    }
+
+    #nav-dots:hover>div>div:nth-of-type(2), >div:last-of-type:hover>button>div {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    #nav-dots>div:hover>div:nth-of-type(2) {
+        font-size: 20px;
+        color: var(--txt-col-1);
+        font-weight: bold;
+    }
+
+    &:has(#nav-dots:hover)>div:last-of-type>button>div {
+        visibility: visible;
+        opacity: 1;
     }
 }
 
@@ -124,6 +159,22 @@ header>div:last-of-type {
     display: flex;
     flex-direction: column;
     gap: 5px;
+    transition: 350ms ease-in-out;
+
+    &:has(#scroll-to-top-btn.hidden) {
+        transform: translateY(calc(30px + 5px));
+    }
+
+    #scroll-to-top-btn.hidden {
+        visibility: hidden;
+        transform: translateY(50px);
+    }
+
+    >button:hover>div {
+        font-size: 20px;
+        color: var(--txt-col-1);
+        font-weight: bold;
+    }
 }
 
 #nav-dots {
@@ -140,35 +191,9 @@ header>div:last-of-type {
         position: relative;
     }
 
-    >div>div:nth-of-type(2) {
-        visibility: hidden;
-        opacity: 0;
-        color: var(--txt-col-2);
-        position: absolute;
-        top: 50%;
-        left: 35px;
-        transform: translateY(calc(-50% - 2px));
-        width: max-content;
-        font-size: 18px;
-        font-family: "Gaegu", serif;
-        font-weight: normal;
-        transition: 350ms;
-    }
-
     >div:has(>.dot.active)>div:nth-of-type(2) {
         font-weight: bold;
         left: 45px;
-    }
-
-    &:hover>div>div:nth-of-type(2) {
-        visibility: visible;
-        opacity: 1;
-    }
-
-    >div:hover>div:nth-of-type(2) {
-        font-size: 20px;
-        color: var(--txt-col-1);
-        font-weight: bold;
     }
 
     >div:has(>.dot) {
