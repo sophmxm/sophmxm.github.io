@@ -3,12 +3,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
 
 :root {
-    --bg-col-1: #fcfaee;
+    /* --bg-col-1: #fcfaee;
     --bg-col-2: #e6d9c8;
     --bg-col-3: #c2a070;
     --txt-col-1: #682b17;
     --txt-col-2: #c2a070;
-    --acc-col-1: #fe5d26;
+    --acc-col-1: #fe5d26; */
 
     --bg-col-1: #f8f7f4;
     --bg-col-2: #e5baff;
@@ -17,6 +17,16 @@
     --txt-col-1: #5f4949;
     --txt-col-2: #bd9191;
     --acc-col-1: #b692ff;
+}
+
+:root[data-mode="light"] {
+    --bg-col-1: #f8f7f4;
+    --txt-col-1: #5f4949;
+}
+
+:root[data-mode="dark"] {
+    --bg-col-1: #22211f;
+    --txt-col-1: #ebdbdb;
 }
 
 html {
@@ -122,6 +132,9 @@ header>div:last-of-type {
     align-items: center;
     gap: 2px;
     min-width: 18px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 
     >div {
         position: relative;

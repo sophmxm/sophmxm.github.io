@@ -155,8 +155,17 @@ function createAboutMeText() {
 	});
 }
 
+// Attached to button to top
+function scrollToTop() {
+	main.scrollTo({
+		top: 0,
+		behavior: "smooth",
+	});
+}
+
+// Check and set to one page or multiple section scroll
 function checkIsOnePage() {
-	// Default value
+	// Default value set to multiple section scroll
 	let one_page = false;
 
 	// One page section
@@ -190,6 +199,33 @@ function toggleOnePage() {
 	createNavDots();
 }
 
+// Check and set to light mode or dark mode
+function checkIsDarkMode() {
+	// Default value set to light mode
+	let dark_mode = false;
+
+	// Check local storage
+	if (localStorage.getItem("isDarkMode") == null) localStorage.setItem("isDarkMode", false);
+	else if (localStorage.getItem("isDarkMode") == "true") dark_mode = true;
+
+	// Set dataset mode
+	if (dark_mode === false) {
+		document.documentElement.dataset.mode = "light";
+	} else {
+		document.documentElement.dataset.mode = "dark";
+	}
+}
+
+// Attached to button to toggle light mode and dark mode
+function toggleDarkMode() {
+	// Set local storage
+	if (localStorage.getItem("isDarkMode") == "true") localStorage.setItem("isDarkMode", false);
+	else localStorage.setItem("isDarkMode", true);
+
+	checkIsDarkMode();
+}
+
+// Get all elements with the dataset textbox and reveal text box on hover
 function getTextBoxElements() {
 	// Get all elements with the text box dataset
 	let text_box_elements = document.querySelectorAll("[data-textbox]");
@@ -203,6 +239,7 @@ function getTextBoxElements() {
 	});
 }
 
+// Set text and reveal text box
 function createTextBox(element) {
 	// Text box element
 	let text_box = document.getElementById("text-box");
@@ -233,8 +270,12 @@ function createTextBox(element) {
 }
 
 checkIsOnePage();
+checkIsDarkMode();
 createContactLinks();
 createAboutMeText();
 createNavDots();
 revealContent();
 getTextBoxElements();
+
+// Set body transition after loaded
+document.body.style.transition = "350ms";
