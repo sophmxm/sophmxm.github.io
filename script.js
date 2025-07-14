@@ -5,7 +5,6 @@ let main = document.getElementsByTagName("main")[0];
 let nav_dots = document.getElementById("nav-dots");
 let nav_dots_list = [];
 let main_sections = document.querySelectorAll("main>section");
-console.log(main_sections);
 
 // Create the navigation section dots
 function createNavDots() {
@@ -98,6 +97,61 @@ function revealContent() {
 	}
 }
 
+// Create contact link list (from ul.contact-links)
+function createContactLinks() {
+	let parent = [...document.getElementsByClassName("contact-links")];
+	let contact_links = [
+		["mailto:sophmxm@gmail.com", "ic:round-email", "sophmxm@gmail.com"],
+		["https://www.linkedin.com/in/sophmxm/", "mdi:linkedin", "linkedin.com/sophmxm"],
+		["https://github.com/sophmxm", "mingcute:github-fill", "github.com/sophmxm"],
+	];
+
+	// For each element with class contact links, create links
+	parent.forEach((element) => {
+		// For each contact link in array, create link
+		for (let i = 0; i < contact_links.length; i++) {
+			let list_item = document.createElement("li");
+			element.appendChild(list_item);
+
+			let link = document.createElement("a");
+			link.target = "_blank";
+			link.href = contact_links[i][0];
+			link.innerText = contact_links[i][2];
+			list_item.appendChild(link);
+
+			let icon = document.createElement("iconify-icon");
+			icon.icon = contact_links[i][1];
+			link.prepend(icon);
+		}
+	});
+}
+
+// Create about me text (from div.about-me-text)
+function createAboutMeText() {
+	let parent = [...document.getElementsByClassName("about-me-text")];
+	let about_me_text = [
+		"Hi, I’m Sophie! I’m an emerging interaction designer who specialises in UI/UX and visual design, with a big passion for web design and development.",
+		"As both an artist and designer, I enjoy producing visually engaging digital works that focus on creating fun and interactive experiences. I love designing for people and problem-solving, always striving to create intuitive and user-centered solutions.",
+	];
+
+	// For each element with class about me text, create text
+	parent.forEach((element) => {
+		// Create first paragraph and prepend
+		let p1 = document.createElement("p");
+		p1.innerText = about_me_text[0];
+		element.prepend(p1);
+
+		// Create paragraphs after first paragraph
+		for (let i = 1; i < about_me_text.length; i++) {
+			let p = document.createElement("p");
+			p.innerText = about_me_text[i];
+			p1.after(p);
+		}
+	});
+}
+
+createContactLinks();
+createAboutMeText();
 createNavDots();
 setActiveNavDot();
 revealContent();
