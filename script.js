@@ -179,20 +179,62 @@ function checkIsOnePage() {
 	main_sections = document.querySelectorAll("main>section:not(.hidden)");
 }
 
+// Attached to button to toggle one page and multiple section scroll
 function toggleOnePage() {
-	let btn = document.getElementById("one-page-toggle-btn");
-
 	// Set local storage
 	if (localStorage.getItem("isOnePage") == "true") localStorage.setItem("isOnePage", false);
 	else localStorage.setItem("isOnePage", true);
 
+	// Reload page and nav dots
 	checkIsOnePage();
 	createNavDots();
 }
 
-checkIsOnePage();
+function getTextBoxElements() {
+	// Get all elements with the text box dataset
+	let text_box_elements = document.querySelectorAll("[data-textbox]");
 
+	// For each element with the dataset
+	text_box_elements.forEach((element) => {
+		// On hover, reveal text box and set text
+		element.addEventListener("mouseenter", () => {
+			createTextBox(element);
+		});
+	});
+}
+
+function createTextBox(element) {
+	// Text box element
+	let text_box = document.getElementById("text-box");
+
+	// Reveal text box and set text
+	text_box.style.display = "block";
+	text_box.innerText = element.dataset.textbox;
+
+	// Move text box with mouse
+	element.addEventListener("mousemove", (event) => {
+		const { clientX, clientY } = event;
+
+		// Animate text box
+		text_box.animate(
+			{
+				left: `${clientX + 10}px`,
+				top: `${clientY - text_box.clientHeight * 0.9 - 3}px`,
+			},
+			{ duration: 1000, fill: "forwards" }
+		);
+	});
+
+	// One mouse leave, hide and reset text box
+	element.addEventListener("mouseleave", () => {
+		text_box.style.display = "";
+		text_box.innerText = "";
+	});
+}
+
+checkIsOnePage();
 createContactLinks();
 createAboutMeText();
 createNavDots();
 revealContent();
+getTextBoxElements();

@@ -103,7 +103,17 @@ header {
             color: var(--bg-col-1);
             background-color: var(--bg-col-3);
         }
+
+        &:active {
+            background-color: var(--bg-col-2);
+        }
     }
+}
+
+header>div:last-of-type {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
 #nav-dots {
@@ -390,6 +400,21 @@ ul.contact-links {
             background-color: var(--txt-col-2);
         }
     }
+}
+
+#text-box {
+    display: none;
+    position: fixed;
+    z-index: 5;
+    color: var(--bg-col-3);
+    border: 1px solid var(--bg-col-3);
+    border-radius: 5px;
+    border-bottom-left-radius: 0;
+    background-color: var(--bg-col-1);
+    padding: 5px;
+    font-size: 14px;
+    text-transform: lowercase;
+    pointer-events: none;
 }
 
 /* animation */
