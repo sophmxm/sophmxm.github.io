@@ -53,7 +53,11 @@ main {
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
     display: grid;
-    grid-template-rows: repeat(5, 100vh);
+    grid-template-rows: repeat(4, 100vh);
+
+    &:has(>#one-page:not(.hidden)) {
+        grid-template-rows: repeat(1, 100vh);
+    }
 }
 
 h1,
@@ -100,7 +104,8 @@ header {
     justify-content: space-between;
     z-index: 5;
 
-    button, a {
+    button,
+    a {
         position: relative;
         display: block;
         box-sizing: border-box;
@@ -130,7 +135,9 @@ header {
         }
     }
 
-    #nav-dots>div>div:nth-of-type(2), >div>button>div, >div>a>div {
+    #nav-dots>div>div:nth-of-type(2),
+    >div>button>div,
+    >div>a>div {
         visibility: hidden;
         opacity: 0;
         color: var(--txt-col-2);
@@ -145,18 +152,23 @@ header {
         transition: 350ms;
     }
 
-    #nav-dots:hover>div>div:nth-of-type(2), >div:hover>button>div, >div:hover>a>div {
+    #nav-dots:hover>div>div:nth-of-type(2),
+    >div:hover>button>div,
+    >div:hover>a>div {
         visibility: visible;
         opacity: 1;
     }
 
-    #nav-dots>div:hover>div:nth-of-type(2), >div>button:hover>div, >div>a:hover>div {
+    #nav-dots>div:hover>div:nth-of-type(2),
+    >div>button:hover>div,
+    >div>a:hover>div {
         font-size: 20px;
         color: var(--txt-col-1);
         font-weight: bold;
     }
 
-    &:has(#nav-dots:hover)>div>button>div, &:has(#nav-dots:hover)>div>a>div {
+    &:has(#nav-dots:hover)>div>button>div,
+    &:has(#nav-dots:hover)>div>a>div {
         visibility: visible;
         opacity: 1;
     }
