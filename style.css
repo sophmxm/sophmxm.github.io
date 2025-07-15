@@ -100,14 +100,17 @@ header {
     justify-content: space-between;
     z-index: 5;
 
-    button {
+    button, a {
         position: relative;
+        display: block;
+        box-sizing: border-box;
         color: var(--bg-col-3);
         border: 1px solid var(--bg-col-3);
         border-radius: 5px;
         background-color: var(--bg-col-1);
         padding: 5px;
         height: 30px;
+        width: 30px;
         aspect-ratio: 1/1;
         cursor: pointer;
         transition: 500ms ease-in-out;
@@ -120,6 +123,10 @@ header {
         &:active {
             color: var(--bg-col-3);
             background-color: var(--bg-col-2);
+        }
+
+        >iconify-icon {
+            font-size: 18px;
         }
     }
 

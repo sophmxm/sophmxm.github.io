@@ -92,6 +92,61 @@ function setActiveNavDot() {
 // Set active navigation dot on scroll event
 main.addEventListener("scroll", setActiveNavDot);
 
+function createSettingsBtns() {
+	let settings_btns = document.getElementById("settings-btns");
+
+	createDarkModeBtn(settings_btns);
+	createScrollToTopBtn(settings_btns);
+}
+
+// Create dark mode button
+function createDarkModeBtn(container) {
+	// Create button
+	let btn = document.createElement("button");
+	btn.onclick = () => {
+		toggleDarkMode(icon);
+	};
+	container.appendChild(btn);
+
+	// Create icon and change icon
+	let icon = document.createElement("iconify-icon");
+	if (localStorage.getItem("isDarkMode") == "true") icon.icon = "mage:moon-fill";
+	else icon.icon = "mage:sun-fill";
+	btn.appendChild(icon);
+
+	// Create text
+	let text = document.createElement("div");
+	text.innerText = "Dark/light mode";
+	btn.appendChild(text);
+}
+
+// Create scroll to top button
+function createScrollToTopBtn(container) {
+	// Create button
+	let btn = document.createElement("button");
+	btn.id = "scroll-to-top-btn";
+	btn.classList.add("hidden");
+	btn.onclick = () => {
+		scrollToTop();
+	};
+	container.appendChild(btn);
+
+	// Create icon
+	let icon = document.createElement("iconify-icon");
+	icon.icon = "mingcute:up-fill";
+	btn.appendChild(icon);
+
+	// Create text
+	let text = document.createElement("div");
+	text.innerText = "Scroll to top";
+	btn.appendChild(text);
+
+	// On scroll, reveal button
+	main.addEventListener("scroll", () => {
+		revealScrollToTopBtn(btn);
+	});
+}
+
 // Staggered reveal content effect
 function revealContent() {
 	for (let i = 0; i < main.children.length; i++) {
@@ -163,15 +218,10 @@ function scrollToTop() {
 	});
 }
 
-function revealScrollToTopBtn() {
-	let btn = document.getElementById("scroll-to-top-btn");
+function revealScrollToTopBtn(btn) {
 	if (main.scrollTop > 100) btn.classList.remove("hidden");
-	else document.getElementById("scroll-to-top-btn").classList.add("hidden");
+	else btn.classList.add("hidden");
 }
-
-main.addEventListener("scroll", () => {
-	revealScrollToTopBtn();
-});
 
 // Check and set to one page or multiple section scroll
 function checkIsOnePage() {
@@ -227,10 +277,15 @@ function checkIsDarkMode() {
 }
 
 // Attached to button to toggle light mode and dark mode
-function toggleDarkMode() {
-	// Set local storage
-	if (localStorage.getItem("isDarkMode") == "true") localStorage.setItem("isDarkMode", false);
-	else localStorage.setItem("isDarkMode", true);
+function toggleDarkMode(icon) {
+	// Set local storage and change icon
+	if (localStorage.getItem("isDarkMode") == "true") {
+		localStorage.setItem("isDarkMode", false);
+		icon.icon = "mage:sun-fill";
+	} else {
+		localStorage.setItem("isDarkMode", true);
+		icon.icon = "mage:moon-fill";
+	}
 
 	checkIsDarkMode();
 }
@@ -279,12 +334,12 @@ function createTextBox(element) {
 	});
 }
 
-revealScrollToTopBtn();
 checkIsOnePage();
 checkIsDarkMode();
 createContactLinks();
 createAboutMeText();
 createNavDots();
+createSettingsBtns();
 revealContent();
 getTextBoxElements();
 
