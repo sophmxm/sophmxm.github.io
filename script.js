@@ -23,19 +23,19 @@ function createNavDots() {
 		dot.classList.add("dot");
 		dot_area.appendChild(dot);
 
-		// Create text header that appears on hover
-		let text = document.createElement("div");
+		// Create label text of header that appears on hover
+		let label = document.createElement("div");
 		// Get the first header in the section
 		for (let j = 0; j < main_sections[i].children.length; j++) {
 			if (main_sections[i].children[j].tagName == "H1") {
-				text.innerText = main_sections[i].children[j].innerText;
+				label.innerText = main_sections[i].children[j].innerText;
 				j++;
 			} else if (main_sections[i].children[j].tagName == "H2") {
-				text.innerText = main_sections[i].children[j].innerText;
+				label.innerText = main_sections[i].children[j].innerText;
 				j++;
 			}
 		}
-		dot_area.appendChild(text);
+		dot_area.appendChild(label);
 
 		// On click dot, scroll to section
 		dot_area.onclick = () => {
@@ -114,10 +114,10 @@ function createDarkModeBtn(container) {
 	else icon.icon = "mage:sun-fill";
 	btn.appendChild(icon);
 
-	// Create text
-	let text = document.createElement("div");
-	text.innerText = "Dark/light mode";
-	btn.appendChild(text);
+	// Create label
+	let label = document.createElement("div");
+	label.innerText = "Dark/light mode";
+	btn.appendChild(label);
 }
 
 // Create scroll to top button
@@ -136,10 +136,10 @@ function createScrollToTopBtn(container) {
 	icon.icon = "mingcute:up-fill";
 	btn.appendChild(icon);
 
-	// Create text
-	let text = document.createElement("div");
-	text.innerText = "Scroll to top";
-	btn.appendChild(text);
+	// Create label
+	let label = document.createElement("div");
+	label.innerText = "Scroll to top";
+	btn.appendChild(label);
 
 	// On scroll, reveal button
 	main.addEventListener("scroll", () => {
