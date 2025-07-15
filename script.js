@@ -1,19 +1,41 @@
 "use strict";
 
+// Main elements
 let main = document.getElementsByTagName("main")[0];
-
-let nav_dots = document.getElementById("nav-dots");
-let nav_dots_list = [];
-let main_sections = document.querySelectorAll("main>section:not(.hidden)");
 
 // Default values
 let dark_mode = false;
 let one_page = false;
 
+// Default functions
+initiatePage();
+
+// Initiate the page
+function initiatePage() {
+	// Check settings
+	checkIsOnePage();
+	checkIsDarkMode();
+
+	// Create elements
+	createContactLinks();
+	createAboutMeText();
+	createSettingsBtns();
+
+	// Staggered reveal elements animated effect
+	revealContent();
+
+	// Set body transition after loaded
+	setTimeout(() => {
+		document.body.style.transition = "350ms";
+	}, 50);
+}
+
 // Create the navigation section dots
-function createNavDots() {
+function createNavDots(main_sections) {
+	let nav_dots = document.getElementById("nav-dots");
+	let nav_dots_list = [];
+
 	// Clear nav dots
-	nav_dots_list = [];
 	nav_dots.innerText = "";
 
 	// For each section in main, create navigation dot
@@ -60,11 +82,18 @@ function createNavDots() {
 			dot.appendChild(icon);
 		}
 	}
-	setActiveNavDot();
+
+	// Set active navigation dot on load
+	setActiveNavDot(nav_dots_list, main_sections);
+
+	// Set active navigation dot on scroll event
+	main.addEventListener("scroll", () => {
+		setActiveNavDot(nav_dots_list, main_sections);
+	});
 }
 
 // Set active navigation section dot
-function setActiveNavDot() {
+function setActiveNavDot(nav_dots_list, main_sections) {
 	// Check each section
 	for (let i = 0; i < main_sections.length; i++) {
 		// Check if scroll is within bounds of one of the sections and set active style
@@ -92,9 +121,6 @@ function setActiveNavDot() {
 		}
 	}
 }
-
-// Set active navigation dot on scroll event
-main.addEventListener("scroll", setActiveNavDot);
 
 function createSettingsBtns() {
 	let settings_btns = document.getElementById("settings-btns");
@@ -227,15 +253,20 @@ function revealScrollToTopBtn(btn) {
 	else btn.classList.add("hidden");
 }
 
-// Check and set to one page or multiple section scroll
+// Check if one page or not, change global variable, remake page
 function checkIsOnePage() {
-	// One page section
-	let one_page_section = document.getElementById("one-page");
-
 	// Check local storage
 	if (localStorage.getItem("isOnePage") == null) localStorage.setItem("isOnePage", one_page);
 	else if (localStorage.getItem("isOnePage") == "false") one_page = false;
 	else if (localStorage.getItem("isOnePage") == "true") one_page = true;
+
+	makeOnePage();
+}
+
+// Make one page or multiple section scroll
+function makeOnePage() {
+	// One page section
+	let one_page_section = document.getElementById("one-page");
 
 	// Set hidden class to sections
 	if (one_page === false) {
@@ -247,27 +278,34 @@ function checkIsOnePage() {
 	}
 
 	// Update main sections array
-	main_sections = document.querySelectorAll("main>section:not(.hidden)");
+	let visible_sections = document.querySelectorAll("main>section:not(.hidden)");
+
+	// Load/reload nav dots
+	createNavDots(visible_sections);
 }
 
-// Attached to button to toggle one page and multiple section scroll
+// Attached to button to toggle one page on and off
 function toggleOnePage() {
 	// Set local storage
 	if (localStorage.getItem("isOnePage") == "true") localStorage.setItem("isOnePage", false);
 	else localStorage.setItem("isOnePage", true);
 
-	// Reload page and nav dots
+	// Check and make page
 	checkIsOnePage();
-	createNavDots();
 }
 
-// Check and set to light mode or dark mode
+// Check if dark mode or not, change global variable, make
 function checkIsDarkMode() {
 	// Check local storage
 	if (localStorage.getItem("isDarkMode") == null) localStorage.setItem("isDarkMode", dark_mode);
 	else if (localStorage.getItem("isDarkMode") == "false") dark_mode = false;
 	else if (localStorage.getItem("isDarkMode") == "true") dark_mode = true;
 
+	makeDarkMode();
+}
+
+// Make light mode or dark mode
+function makeDarkMode() {
 	// Set dataset mode
 	if (dark_mode === false) {
 		document.documentElement.dataset.mode = "light";
@@ -287,6 +325,7 @@ function toggleDarkMode(icon) {
 		icon.icon = "mage:moon-fill";
 	}
 
+	// Check and make
 	checkIsDarkMode();
 }
 
@@ -333,15 +372,3 @@ function createTextBox(element) {
 		text_box.innerText = "";
 	});
 }
-
-checkIsOnePage();
-checkIsDarkMode();
-createContactLinks();
-createAboutMeText();
-createNavDots();
-createSettingsBtns();
-revealContent();
-getTextBoxElements();
-
-// Set body transition after loaded
-document.body.style.transition = "350ms";
