@@ -6,6 +6,10 @@ let nav_dots = document.getElementById("nav-dots");
 let nav_dots_list = [];
 let main_sections = document.querySelectorAll("main>section:not(.hidden)");
 
+// Default values
+let dark_mode = false;
+let one_page = false;
+
 // Create the navigation section dots
 function createNavDots() {
 	// Clear nav dots
@@ -225,14 +229,12 @@ function revealScrollToTopBtn(btn) {
 
 // Check and set to one page or multiple section scroll
 function checkIsOnePage() {
-	// Default value set to multiple section scroll
-	let one_page = false;
-
 	// One page section
 	let one_page_section = document.getElementById("one-page");
 
 	// Check local storage
-	if (localStorage.getItem("isOnePage") == null) localStorage.setItem("isOnePage", false);
+	if (localStorage.getItem("isOnePage") == null) localStorage.setItem("isOnePage", one_page);
+	else if (localStorage.getItem("isOnePage") == "false") one_page = false;
 	else if (localStorage.getItem("isOnePage") == "true") one_page = true;
 
 	// Set hidden class to sections
@@ -261,11 +263,9 @@ function toggleOnePage() {
 
 // Check and set to light mode or dark mode
 function checkIsDarkMode() {
-	// Default value set to light mode
-	let dark_mode = false;
-
 	// Check local storage
-	if (localStorage.getItem("isDarkMode") == null) localStorage.setItem("isDarkMode", false);
+	if (localStorage.getItem("isDarkMode") == null) localStorage.setItem("isDarkMode", dark_mode);
+	else if (localStorage.getItem("isDarkMode") == "false") dark_mode = false;
 	else if (localStorage.getItem("isDarkMode") == "true") dark_mode = true;
 
 	// Set dataset mode
