@@ -130,7 +130,7 @@ header {
         }
     }
 
-    #nav-dots>div>div:nth-of-type(2), >div:last-of-type>button>div {
+    #nav-dots>div>div:nth-of-type(2), >div>button>div, >div>a>div {
         visibility: hidden;
         opacity: 0;
         color: var(--txt-col-2);
@@ -145,18 +145,18 @@ header {
         transition: 350ms;
     }
 
-    #nav-dots:hover>div>div:nth-of-type(2), >div:last-of-type:hover>button>div {
+    #nav-dots:hover>div>div:nth-of-type(2), >div:hover>button>div, >div:hover>a>div {
         visibility: visible;
         opacity: 1;
     }
 
-    #nav-dots>div:hover>div:nth-of-type(2) {
+    #nav-dots>div:hover>div:nth-of-type(2), >div>button:hover>div, >div>a:hover>div {
         font-size: 20px;
         color: var(--txt-col-1);
         font-weight: bold;
     }
 
-    &:has(#nav-dots:hover)>div:last-of-type>button>div {
+    &:has(#nav-dots:hover)>div>button>div, &:has(#nav-dots:hover)>div>a>div {
         visibility: visible;
         opacity: 1;
     }
@@ -175,12 +175,6 @@ header>div:last-of-type {
     #scroll-to-top-btn.hidden {
         visibility: hidden;
         transform: translateY(50px);
-    }
-
-    >button:hover>div {
-        font-size: 20px;
-        color: var(--txt-col-1);
-        font-weight: bold;
     }
 }
 
