@@ -17,6 +17,14 @@
     --txt-col-1: #5f4949;
     --txt-col-2: #bd9191;
     --acc-col-1: #b692ff;
+
+    --bg-col-1: #f8efda;
+    --bg-col-2: #81a73c;
+    --bg-col-2-5: #91a158;
+    --bg-col-3: #314913;
+    --txt-col-1: #5f4949;
+    --txt-col-2: #bd9191;
+    --acc-col-1: #7a8450;
 }
 
 :root[data-mode="light"] {
@@ -366,7 +374,7 @@ a.link {
     transition: 350ms;
 
     &:hover {
-        color: var(--txt-col-2);
+        color: var(--bg-col-3);
     }
 }
 
@@ -453,6 +461,35 @@ ul.contact-links {
     }
 }
 
+ul.tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    row-gap: 35px;
+    width: 600px;
+    margin: 40px 0 30px 0;
+
+    >li {
+        padding-inline-start: 0;
+        list-style: none;
+
+        >a {
+            text-decoration: none;
+            color: inherit;
+            padding: 10px 15px;
+            border: 1px solid var(--txt-col-1);
+            border-radius: 25px;
+            transition: 350ms;
+
+            &:hover {
+                background-color: var(--bg-col-3);
+                border-color: var(--bg-col-3);
+            }
+        }
+    }
+}
+
 #text-box {
     display: none;
     position: fixed;
@@ -466,6 +503,68 @@ ul.contact-links {
     font-size: 14px;
     text-transform: lowercase;
     pointer-events: none;
+}
+
+#container {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    user-select: none;
+    pointer-events: none;
+
+    #ambience {
+        position: absolute;
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        background: linear-gradient(#6b2b0650, #be8b3d50);
+    }
+
+    #lamp-container {
+        height: 100vh;
+        padding: 0 20vw;
+        display: flex;
+        justify-content: center;
+        
+        #lamp {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            mix-blend-mode: color-dodge;
+
+            >div:first-of-type {
+                position: absolute;
+                top: 250px;
+                width: 125px;
+                height: 125px;
+                border-radius: 100px;
+                background-color: #f1e1ac;
+                box-shadow: 0 0 8px #d6a67e, 0 0 32px 8px #d6a67e, 0 0 120px 32px #d6a67e, 0 0 10px #dda96e inset, 0 0 32px 8px #e6bb93 inset, 0 0 240px 32px #68321380;
+            }
+
+            >div:nth-of-type(2) {
+                position: absolute;
+                height: 250px;
+                width: 50px;
+            }
+
+            >div:nth-of-type(3) {
+                position: absolute;
+                height: 100px;
+                width: 500px;
+                left: calc(50% - 25px);
+            }
+
+            >div:nth-of-type(4) {
+                position: absolute;
+                height: 250px;
+                width: 50px;
+                right: -50vw;
+            }
+        }
+    }
 }
 
 /* animation */
