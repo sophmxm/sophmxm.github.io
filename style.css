@@ -18,13 +18,13 @@
     --txt-col-2: #bd9191;
     --acc-col-1: #b692ff;
 
-    --bg-col-1: #f8efda;
-    --bg-col-2: #81a73c;
-    --bg-col-2-5: #91a158;
-    --bg-col-3: #314913;
+    /* --bg-col-1: #f8f7f4;
+    --bg-col-2: #CDC6A5;
+    --bg-col-2-5: #979568;
+    --bg-col-3: #6c7042;
     --txt-col-1: #5f4949;
     --txt-col-2: #bd9191;
-    --acc-col-1: #7a8450;
+    --acc-col-1: #6c7042; */
 }
 
 :root[data-mode="light"] {
@@ -34,6 +34,7 @@
 
 :root[data-mode="dark"] {
     --bg-col-1: #22211f;
+    --bg-col-1: #221f1f;
     --bg-col-1: #1f1f22;
     --txt-col-1: #ebdbdb;
 }
@@ -105,7 +106,7 @@ header {
     position: fixed;
     top: 0;
     left: 0;
-    height: calc(100vh - 2vh - 20px);
+    height: calc(100vh - 2vh - 20px - 32px);
     padding: calc(1vh + 10px) calc(2vw + 15px);
     display: flex;
     flex-direction: column;
@@ -483,8 +484,8 @@ ul.tags {
             transition: 350ms;
 
             &:hover {
-                background-color: var(--bg-col-3);
-                border-color: var(--bg-col-3);
+                background-color: var(--bg-col-2-5);
+                border-color: var(--bg-col-2-5);
             }
         }
     }
@@ -505,29 +506,34 @@ ul.tags {
     pointer-events: none;
 }
 
+#ambience {
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    /* background: linear-gradient(#613319, #8C5A27);
+    opacity: 0.2; */
+    background: linear-gradient(#221f1f, transparent);
+    z-index: -1;
+    pointer-events: none;
+}
+
 #container {
-    position: fixed;
+    position: absolute;
     top: 0;
     width: 100vw;
     height: 100vh;
     user-select: none;
     pointer-events: none;
 
-    #ambience {
-        position: absolute;
-        height: 100vh;
-        width: 100vw;
-        display: flex;
-        justify-content: center;
-        background: linear-gradient(#6b2b0650, #be8b3d50);
-    }
-
     #lamp-container {
         height: 100vh;
         padding: 0 20vw;
         display: flex;
         justify-content: center;
-        
+
         #lamp {
             position: absolute;
             display: flex;
@@ -536,7 +542,7 @@ ul.tags {
 
             >div:first-of-type {
                 position: absolute;
-                top: 250px;
+                top: 225px;
                 width: 125px;
                 height: 125px;
                 border-radius: 100px;

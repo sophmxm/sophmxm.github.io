@@ -71,46 +71,41 @@
             <h2>Contact</h2>
             <ul class="contact-links"></ul>
         </section>
-    </main>
-    <div id="container">
-        <div id="ambience"></div>
-        <div id="lamp-container">
-            <div id="lamp">
-                <div>
-                    <!-- <svg viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg" stroke="transparent" fill="#f1e1ac">
-                            <circle cx="5" cy="5" r="5" />
-                        </svg> -->
-                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" stroke="#d6a67e" fill="transparent" stroke-width="1.5">
-                        <defs>
-                            <radialGradient id="lampshade-gradient" x1="0%" y1="0%" x2="0%" y2="100%" gradientUnits="userSpaceOnUse">
-                                <stop offset="20%" stop-color="#dacd9d" />
-                                <stop offset="60%" stop-color="#e7c98f" />
-                                <stop offset="100%" stop-color="#dda96e" />
-                            </radialGradient>
-                        </defs>
-                        <!-- Circle clip path -->
-                        <clipPath id="lampshade-clip">
-                            <circle cx="50" cy="50" r="51" />
-                        </clipPath>
-                        <!-- Horizontal lines, in order from first to last -->
-                        <defs>
-                            <g id="horizontal-lines">
-                                <path d="M 20 8
+        <div id="container">
+            <div id="lamp-container">
+                <div id="lamp">
+                    <div>
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" stroke="#d6a67e" fill="transparent" stroke-width="1.5">
+                            <defs>
+                                <radialGradient id="lampshade-gradient" x1="0%" y1="0%" x2="0%" y2="100%" gradientUnits="userSpaceOnUse">
+                                    <stop offset="20%" stop-color="#dacd9d" />
+                                    <stop offset="60%" stop-color="#e7c98f" />
+                                    <stop offset="100%" stop-color="#dda96e" />
+                                </radialGradient>
+                            </defs>
+                            <!-- Circle clip path -->
+                            <clipPath id="lampshade-clip">
+                                <circle cx="50" cy="50" r="51" />
+                            </clipPath>
+                            <!-- Horizontal lines, in order from first to last -->
+                            <defs>
+                                <g id="horizontal-lines">
+                                    <path d="M 20 8
                                         C 50 3 50 3 80 8" />
-                                <path d="M 15 12
+                                    <path d="M 15 12
                                         C 50 7 50 7 85 12" />
-                                <path d="M 9 18
+                                    <path d="M 9 18
                                         C 50 13 50 13 91 18" />
-                                <path d="M 5 25
+                                    <path d="M 5 25
                                         C 50 21 50 21 95 25" />
-                                <path d="M 1 32
+                                    <path d="M 1 32
                                         C 50 30 50 30 99 32" />
-                                <path d="M 0 40
+                                    <path d="M 0 40
                                         C 50 39 50 39 100 40" />
-                            </g>
-                        </defs>
-                        <!-- Vertical lines, in order: 2nd, 3rd, 4th, 1st line -->
-                        <path d="M 48 0
+                                </g>
+                            </defs>
+                            <!-- Vertical lines, in order: 2nd, 3rd, 4th, 1st line -->
+                            <path d="M 48 0
                                 C 15 20 15 80 48 100
                                 L 50 100
                                 C 62 90 62 10 50 0
@@ -119,44 +114,46 @@
                                 L 45 100
                                 C -10 90 -10 10 45 0
                                 Z" stroke="url(#lampshade-gradient)" />
-                        <use xlink:href="#horizontal-lines" clip-path="url(#lampshade-clip)" x="0" y="0" stroke="url(#lampshade-gradient)" />
-                        <use xlink:href="#horizontal-lines" clip-path="url(#lampshade-clip)" x="0" y="-48" transform="translate(0 50) scale(1 -1.05)" stroke="url(#lampshade-gradient)" />
-                        <path d="M -1 50
+                            <use xlink:href="#horizontal-lines" clip-path="url(#lampshade-clip)" x="0" y="0" stroke="url(#lampshade-gradient)" />
+                            <use xlink:href="#horizontal-lines" clip-path="url(#lampshade-clip)" x="0" y="-48" transform="translate(0 50) scale(1 -1.05)" stroke="url(#lampshade-gradient)" />
+                            <path d="M -1 50
                                 C 50 50 50 50 101 50" clip-path="url(#lampshade-clip)" stroke="url(#lampshade-gradient)" />
-                    </svg>
-                </div>
-                <div>
-                    <svg viewBox="0 0 100 500" xmlns="http://www.w3.org/2000/svg" stroke-width="6">
-                        <defs>
-                            <linearGradient id="cord-gradient" x1="0%" y1="0%" x2="0%" y2="100%" gradientUnits="userSpaceOnUse">
-                                <stop offset="50%" stop-color="black" />
-                                <stop offset="90%" stop-color="#683213" />
-                                <stop offset="95%" stop-color="#8d4d19" />
-                                <stop offset="99%" stop-color="#a76221" />
-                            </linearGradient>
-                        </defs>
-                        <path d="M 50 0 L 50 500 z" stroke="url(#cord-gradient)" />
-                    </svg>
-                </div>
-                <div>
-                    <svg viewBox="0 0 1000 200" xmlns="http://www.w3.org/2000/svg" stroke="black" fill="transparent" stroke-width="6">
-                        <defs>
-                            <linearGradient id="cord-gradient-2" x1="0%" y1="0%" x2="0%" y2="100%" gradientTransform="rotate(2)" gradientUnits="userSpaceOnUse">
-                                <stop offset="20%" stop-color="black" />
-                                <stop offset="100%" stop-color="#683213" />
-                            </linearGradient>
-                        </defs>
-                        <path d="M 30 0 C 20 60 350 150 1000 -10" stroke="url(#cord-gradient-2)" />
-                    </svg>
-                </div>
-                <div>
-                    <svg viewBox="0 0 100 500" xmlns="http://www.w3.org/2000/svg" stroke="black" fill="transparent" stroke-width="6">
-                        <path d="M 10 0 C 10 225 50 250 100 300" />
-                    </svg>
+                        </svg>
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 100 500" xmlns="http://www.w3.org/2000/svg" stroke-width="6">
+                            <defs>
+                                <linearGradient id="cord-gradient" x1="0%" y1="0%" x2="0%" y2="100%" gradientUnits="userSpaceOnUse">
+                                    <stop offset="50%" stop-color="black" />
+                                    <stop offset="90%" stop-color="#683213" />
+                                    <stop offset="95%" stop-color="#8d4d19" />
+                                    <stop offset="99%" stop-color="#a76221" />
+                                </linearGradient>
+                            </defs>
+                            <path d="M 50 0 L 50 450 z" stroke="url(#cord-gradient)" />
+                        </svg>
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 1000 200" xmlns="http://www.w3.org/2000/svg" stroke="black" fill="transparent" stroke-width="6">
+                            <defs>
+                                <linearGradient id="cord-gradient-2" x1="0%" y1="0%" x2="0%" y2="100%" gradientTransform="rotate(2)" gradientUnits="userSpaceOnUse">
+                                    <stop offset="20%" stop-color="black" />
+                                    <stop offset="100%" stop-color="#683213" />
+                                </linearGradient>
+                            </defs>
+                            <path d="M 30 0 C 20 60 350 150 1000 -10" stroke="url(#cord-gradient-2)" />
+                        </svg>
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 100 500" xmlns="http://www.w3.org/2000/svg" stroke="black" fill="transparent" stroke-width="6">
+                            <path d="M 10 0 C 10 225 50 250 100 300" />
+                        </svg>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    <div id="ambience"></div>
+    </main>
     <div id="text-box"></div>
     <script src="script.js"></script>
 </body>
