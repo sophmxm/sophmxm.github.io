@@ -1,0 +1,378 @@
+@font-face {
+    font-family: "Noto Sans";
+    src: url(./resources/assets/fonts/noto_sans/NotoSans-VariableFont_wdth\,wght.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Sen";
+    src: url(./resources/assets/fonts/sen/Sen-VariableFont_wght.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Cousine";
+    src: url(./resources/assets/fonts/cousine/Cousine-Regular.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Roboto Mono";
+    src: url(./resources/assets/fonts/roboto_mono/RobotoMono-VariableFont_wght.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Cousine";
+    src: url(./resources/assets/fonts/cousine/Cousine-Bold.ttf);
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Cousine";
+    src: url(./resources/assets/fonts/cousine/Cousine-BoldItalic.ttf);
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Great Warrior";
+    src: url(./resources/assets/fonts/great_warrior/Great\ Warrior.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Lostar";
+    src: url(./resources/assets/fonts/lostar/Lostar.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Bashing";
+    src: url(./resources/assets/fonts/bashing-demo/Bashing\ DEMO.otf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Letter Magic";
+    src: url(./resources/assets/fonts/letter_magic/Letter\ Magic.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Rozha One";
+    src: url(./resources/assets/fonts/rozha_one/RozhaOne-Regular.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Oleo Script";
+    src: url(./resources/assets/fonts/oleo_script/OleoScript-Regular.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Shrikhand";
+    src: url(./resources/assets/fonts/shrikhand/Shrikhand-Regular.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Santup";
+    src: url(./resources/assets/fonts/santup/Santup.otf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Barriecito";
+    src: url(./resources/assets/fonts/barriecito/Barriecito-Regular.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Londrina Solid";
+    src: url(./resources/assets/fonts/londrina_solid/LondrinaSolid-Regular.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Londrina Outline";
+    src: url(./resources/assets/fonts/londrina_outline/LondrinaOutline-Regular.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Londrina Sketch";
+    src: url(./resources/assets/fonts/londrina_sketch/LondrinaSketch-Regular.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    /* --bg-col-main: #4D372F;
+    --txt-col-main: #FFF0E8;
+    --heading-col-main: #afaa07; */
+    --bg-col-main: #f8f7f4;
+    --txt-col-main: #3d2e29;
+    --txt-col-lighter: #694419;
+    --txt-col-lightest: #835e26;
+    --heading-col-main: #738b2e;
+    --heading-col-lighter: #a6b142;
+    --links-col-main: #637922;
+
+    --heading-font-family: "Londrina Solid";
+    --subheading-font-family: "Cousine";
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-col-main);
+    color: var(--txt-col-main);
+    font-size: 15px;
+}
+
+a {
+    color: var(--links-col-main);
+    transition: 150ms;
+
+    &:hover {
+        color: var(--heading-col-lighter);
+        font-style: italic;
+    }
+}
+
+header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 25px 0;
+    font-family: var(--subheading-font-family), sans-serif;
+
+    ul {
+        padding-inline-start: 0;
+        list-style: none;
+        display: flex;
+        justify-content: flex-end;
+        gap: 25px;
+        padding: 0 50px;
+
+        a {
+            color: inherit;
+        }
+    }
+}
+
+main {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+section:has(>h1) {
+    margin: auto;
+    max-width: 600px;
+    /* width: min-content; */
+    /* border-radius: 50px;
+    backdrop-filter: blur(12px);
+    background-color: #d0d0d070;
+    padding: 125px 125px 125px 250px; */
+}
+
+h1:has(>span.mixed-heading) {
+    position: relative;
+    color: var(--heading-col-main);
+    font-weight: bold;
+    font-size: 128px;
+    font-family: var(--heading-font-family);
+    margin: 0;
+    margin-bottom: -20px;
+    margin-right: 10vw;
+    /* text-shadow: -2.2px -2.2px 0 var(--txt-col-lighter), 2.2px -2.2px 0 var(--txt-col-lighter), -2.2px 2.2px 0 var(--txt-col-lighter), 2.2px 2.2px 0 var(--txt-col-lighter); */
+    letter-spacing: 2px;
+
+    >svg {
+        height: 88px;
+        width: 88px;
+        transform: translateY(12px);
+
+        >path {
+            height: 96px;
+            fill: var(--heading-col-main);
+        }
+    }
+
+    /* &::after {
+        content: "Sophie";
+        font-family: "Londrina Sketch";
+        text-shadow: none;
+        color: var(--txt-col-lighter);
+        position: absolute;
+        left: 0;
+    }
+     
+    &::before {
+        content: "Sophie";
+        text-shadow: none;
+        color: #a6b142;
+        position: absolute;
+        left: 0;
+        overflow-y: hidden;
+        height: 57%;
+    } */
+
+    >span.mixed-heading {
+        color: var(--txt-col-main);
+        font-weight: bold;
+        font-size: 32px;
+        font-family: var(--subheading-font-family), sans-serif;
+        text-shadow: none;
+        letter-spacing: -1px;
+
+        &:first-of-type {
+            display: block;
+            position: absolute;
+            transform: translateX(calc(-100% - 16px)) translateY(calc(128px - 32px/2 - 26px));
+            /* translateY h1_height - span_height/2 + offset */
+        }
+
+        &:nth-of-type(2) {
+            position: absolute;
+            width: max-content;
+            bottom: -18px;
+            left: 212px;
+        }
+    }
+}
+
+p.sub-header {
+    font-weight: normal;
+    font-size: 18px;
+    font-family: sans-serif;
+    text-align: left;
+    margin-top: 48px;
+}
+
+p.mixed-heading {
+    font-weight: normal;
+    font-size: 1em;
+    font-family: sans-serif;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 0;
+    gap: 12px;
+
+    p {
+        font-family: var(--subheading-font-family);
+        margin: 0;
+
+        span {
+            font-weight: bold;
+        }
+
+        a {
+            color: var(--links-col-main);
+            font-weight: bold;
+        }
+    }
+}
+
+footer ul {
+    padding-inline-start: 0;
+    list-style: none;
+    display: flex;
+    gap: 10px;
+
+    a {
+        color: var(--links-col-main);
+
+        &:hover {
+            color: var(--heading-col-lighter);
+        }
+    }
+
+    iconify-icon {
+        color: inherit;
+        font-size: 24px;
+        transform: translateY(-4px);
+    }
+}
+
+/* footer ul {
+    padding-inline-start: 0;
+    list-style: none;
+    display: flex;
+    font-family: var(--subheading-font-family);
+
+    li {
+        position: relative;
+        padding: 0 16px;
+
+        &:not(:last-of-type)::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            transform: translateY(calc(50% + 2.5px)) translateX(50%);
+            height: 5px;
+            width: 5px;
+            border-radius: 5px;
+            background-color: var(--txt-col-main);
+        }
+    }
+
+    a {
+        color: var(--links-col-main);
+    }
+
+    iconify-icon {
+        color: inherit;
+        font-size: 24px;
+        transform: translateY(-4px);
+    }
+} */
+
+#text-cycle-anim {
+    position: relative;
+    color: var(--txt-col-lightest);
+    text-align: left;
+    font-style: italic;
+}
+
+div.cursor {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: -8px;
+    background-color: var(--txt-col-main);
+    width: 5px;
+    height: 90%;
+    animation: cursor 600ms step-end infinite alternate;
+}
+
+@keyframes cursor {
+    50% {
+        background-color: transparent;
+    }
+}
