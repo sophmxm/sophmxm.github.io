@@ -5,6 +5,14 @@ let interval_time = Object.values(cycle_time).reduce((a, b) => {
 	return a + b;
 });
 
+subHeaderCycleText();
+centreFirstSection();
+
+returnLocalTime();
+setInterval(() => {
+	returnLocalTime();
+}, 1000);
+
 function subHeaderCycleText() {
 	let span = document.getElementById("text-cycle-anim");
 	let text_array = ["an emerging designer", "designing interactions", "developing websites", "learning coding languages", "designing fun", "looking to learn more", "a cat lover", "making for people"];
@@ -12,8 +20,6 @@ function subHeaderCycleText() {
 
 	cycleText(span, text_array, cursor);
 }
-
-subHeaderCycleText();
 
 function cycleText(element, text_array, cursor) {
 	// Initial cycle of text array
@@ -74,4 +80,34 @@ function typeWriterBackspace(element, cursor) {
 			}
 		}, typing_interval_time * i);
 	}
+}
+
+function returnLocalTime() {
+	let date = new Date();
+
+	const date_options = {
+		timeZone: "Australia/Brisbane",
+		year: "numeric",
+		month: "short",
+		day: "numeric",
+	};
+
+	const time_options = {
+		timeZone: "Australia/Brisbane",
+		timeZoneName: "short",
+		hourCycle: "h24",
+		hour: "numeric",
+		minute: "numeric",
+		second: "numeric",
+	};
+
+	document.getElementById("time").innerText = date.toLocaleString("default", time_options) + ", " + date.toLocaleString("default", date_options);
+}
+
+// 50% top padding in main
+function centreFirstSection() {
+	const main = document.getElementsByTagName("main")[0];
+	let first_section = document.querySelector("main>section:first-of-type:not(.uncentered)");
+	main.style.paddingTop = `calc(50vh - ${first_section.clientHeight / 2}px)`;
+	console.log(first_section)
 }
