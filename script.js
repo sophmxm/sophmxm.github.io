@@ -5,6 +5,7 @@ let interval_time = Object.values(cycle_time).reduce((a, b) => {
 	return a + b;
 });
 
+createNav()
 subHeaderCycleText();
 centreFirstSection();
 
@@ -109,5 +110,32 @@ function centreFirstSection() {
 	const main = document.getElementsByTagName("main")[0];
 	let first_section = document.querySelector("main>section:first-of-type:not(.uncentered)");
 	main.style.paddingTop = `calc(50vh - ${first_section.clientHeight / 2}px)`;
-	console.log(first_section)
+	main.style.minHeight = `calc(50vh + ${first_section.clientHeight / 2}px)`;
+}
+
+function createNav() {
+	const header = document.getElementsByTagName("header")[0];
+
+	let nav = document.createElement("nav");
+	header.appendChild(nav);
+
+	let ul = document.createElement("ul");
+	nav.appendChild(ul);
+
+	let nav_links = [
+		["Sophie Martin", "/"],
+		["My stuff", ""],
+		["About me", "about-me.html"],
+		["Say hi", ""],
+	];
+
+	nav_links.forEach((link) => {
+		let li = document.createElement("li");
+		ul.appendChild(li);
+
+		let a = document.createElement("a");
+		a.innerText = link[0];
+		a.href = link[1];
+		li.appendChild(a);
+	});
 }
