@@ -151,6 +151,12 @@ function centreFirstSection() {
 	let first_section = document.querySelector("main>section:first-of-type:not(.uncentered)");
 	main.style.paddingTop = `calc(50vh - ${first_section.clientHeight / 2}px)`;
 	main.style.minHeight = `calc(50vh + ${first_section.clientHeight / 2}px)`;
+
+	if (first_section.id = "fit-height") {
+		first_section.style.minHeight = `calc(50vh + ${first_section.clientHeight / 2}px)`;
+		first_section.style.marginTop = "0";
+		first_section.style.marginBottom = "0";
+	}
 }
 
 function createNav() {
