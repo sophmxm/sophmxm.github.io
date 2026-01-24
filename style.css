@@ -41,8 +41,8 @@
     --colour-primary-dark: #668118;
 
     --font-main: "Cousine", "Lucida Console", monospace;
-    --font-header-1: "Vividly", cursive;
-    --font-header-2: "Bubble Boop", cursive;
+    --font-header-1: "Bubble Boop", cursive;
+    --font-header-2: "Vividly", cursive;
 }
 
 body {
@@ -83,7 +83,7 @@ header {
             padding-inline-start: 0;
             display: flex;
             align-items: center;
-            gap: 50px;
+            gap: 40px;
 
             >li>a {
                 text-decoration: none;
@@ -102,7 +102,7 @@ header {
             >li:first-of-type {
                 flex-grow: 1;
                 text-transform: uppercase;
-                font-family: var(--font-header-2);
+                font-family: var(--font-header-1);
                 font-size: 20px;
 
                 >a {
@@ -129,7 +129,7 @@ footer {
     }
 }
 
-.social_icons_list {
+.social-icons-list {
     list-style: none;
     padding-inline-start: 0;
     display: flex;
@@ -139,4 +139,24 @@ footer {
 
 iconify-icon {
     transform: translateY(2px);
+}
+
+main {
+    padding: 100px 50px;
+}
+
+h1 {
+    font-family: var(--font-header-1);
+    font-size: 36px;
+    color: var(--colour-primary);
+    margin: 0;
+
+    >span {
+        font-family: var(--font-header-2);
+        font-size: 20px;
+        color: var(--colour-text);
+        font-weight: normal;
+        display: inline-block;
+        transform: translateY(-3px);
+    }
 }

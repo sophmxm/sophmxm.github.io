@@ -59,12 +59,12 @@ function createFooter() {
 	p.appendChild(link_resume);
 
 	let social_icons_list = document.createElement("ul");
-	social_icons_list.classList.add("social_icons_list");
+	social_icons_list.classList.add("social-icons-list");
 	footer_container.appendChild(social_icons_list);
 }
 
 function createSocialIconsList() {
-	let social_icons_list_elements = document.querySelectorAll(".social_icons_list");
+	let social_icons_list_elements = document.querySelectorAll(".social-icons-list");
 
 	social_icons_list_elements.forEach((list) => {
 		social_links.forEach((item) => {
