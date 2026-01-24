@@ -1,0 +1,75 @@
+@font-face {
+    font-family: "Bubble Boop";
+    src: url(./resources/assets/fonts/bubble_boop/BubbleBoop-Regular.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Cousine";
+    src: url(./resources/assets/fonts/cousine/Cousine-Regular.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Vividly";
+    src: url(./resources/assets/fonts/vividly/Vividly-Regular.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    --colour-background: #ffffff;
+    --colour-text: #000000;
+    --colour-text-light: #aaaaaa;
+    --colour-primary: #8da83f;
+    --colour-primary-dark: #668118;
+
+    --font-main: "Cousine", "Lucida Console", monospace;
+    --font-header-1: "Vividly", cursive;
+    --font-header-2: "Bubble Boop", cursive;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-main);
+}
+
+nav {
+    padding: 40px 50px;
+
+    >ul {
+        list-style: none;
+        padding-inline-start: 0;
+        display: flex;
+        gap: 50px;
+
+        >li>a {
+            text-decoration: none;
+        }
+
+        >li:not(:first-of-type)>a {
+            color: var(--colour-text);
+            font-size: 14px;
+
+            &:hover {
+                font-style: italic;
+                text-decoration: underline;
+                color: var(--colour-primary);
+            }
+        }
+
+        >li:first-of-type {
+            flex-grow: 1;
+            text-transform: uppercase;
+            font-family: var(--font-header-2);
+            font-size: 20px;
+
+            >a {
+                color: var(--colour-primary);
+            }
+        }
+    }
+}
