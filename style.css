@@ -58,6 +58,7 @@ a {
 
     &:hover {
         font-style: italic;
+        color: var(--colour-primary-dark);
     }
 }
 
@@ -65,58 +66,77 @@ header>nav,
 footer>div {
     padding: 40px 50px;
 
-    >ul, >p {
+    >ul,
+    >p {
         margin: 0;
     }
 }
 
-header
-{
+header {
     position: fixed;
     top: 0;
     width: 100%;
 
     >nav {
-    >ul {
-        list-style: none;
-        padding-inline-start: 0;
-        display: flex;
-        align-items: center;
-        gap: 50px;
+        >ul {
+            list-style: none;
+            padding-inline-start: 0;
+            display: flex;
+            align-items: center;
+            gap: 50px;
 
-        >li>a {
-            text-decoration: none;
-        }
-
-        >li:not(:first-of-type)>a {
-            color: var(--colour-text);
-
-            &:hover {
-                font-style: italic;
-                text-decoration: underline;
-                color: var(--colour-primary);
+            >li>a {
+                text-decoration: none;
             }
-        }
 
-        >li:first-of-type {
-            flex-grow: 1;
-            text-transform: uppercase;
-            font-family: var(--font-header-2);
-            font-size: 20px;
+            >li:not(:first-of-type)>a {
+                color: var(--colour-text);
 
-            >a {
-                color: var(--colour-primary);
+                &:hover {
+                    font-style: italic;
+                    text-decoration: underline;
+                    color: var(--colour-primary);
+                }
+            }
 
-                &:hover{
-                    font-style: normal;
+            >li:first-of-type {
+                flex-grow: 1;
+                text-transform: uppercase;
+                font-family: var(--font-header-2);
+                font-size: 20px;
+
+                >a {
+                    color: var(--colour-primary);
+
+                    &:hover {
+                        font-style: normal;
+                    }
                 }
             }
         }
     }
-}}
+}
 
 footer {
     position: absolute;
     bottom: 0;
     width: 100%;
+
+    >div {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+.social_icons_list {
+    list-style: none;
+    padding-inline-start: 0;
+    display: flex;
+    gap: 10px;
+    font-size: 20px;
+}
+
+iconify-icon {
+    transform: translateY(2px);
 }
