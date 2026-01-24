@@ -1,11 +1,4 @@
 @font-face {
-    font-family: "Noto Sans";
-    src: url(./resources/assets/fonts/noto_sans/NotoSans-VariableFont_wdth\,wght.ttf);
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
     font-family: "Sen";
     src: url(./resources/assets/fonts/sen/Sen-VariableFont_wght.ttf);
     font-weight: normal;
@@ -45,20 +38,6 @@
     src: url(./resources/assets/fonts/cousine/Cousine-BoldItalic.ttf);
     font-weight: bold;
     font-style: italic;
-}
-
-@font-face {
-    font-family: "Bashing";
-    src: url(./resources/assets/fonts/bashing-demo/Bashing\ DEMO.otf);
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: "Barriecito";
-    src: url(./resources/assets/fonts/barriecito/Barriecito-Regular.ttf);
-    font-weight: normal;
-    font-style: normal;
 }
 
 @font-face {
@@ -229,6 +208,10 @@ h1 {
         display: block;
         margin-top: 10px;
         font-size: 24px;
+
+        >.brown {
+            font-style: italic;
+        }
     }
 }
 
