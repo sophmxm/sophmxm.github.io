@@ -13,6 +13,20 @@
 }
 
 @font-face {
+    font-family: "Cousine";
+    src: url(./resources/assets/fonts/cousine/Cousine-Bold.ttf);
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Cousine";
+    src: url(./resources/assets/fonts/cousine/Cousine-BoldItalic.ttf);
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
     font-family: "Vividly";
     src: url(./resources/assets/fonts/vividly/Vividly-Regular.ttf);
     font-weight: normal;
@@ -35,15 +49,39 @@ body {
     margin: 0;
     padding: 0;
     font-family: var(--font-main);
+    font-size: 14px;
 }
 
-nav {
+a {
+    color: var(--colour-primary);
+    text-decoration: underline;
+
+    &:hover {
+        font-style: italic;
+    }
+}
+
+header>nav,
+footer>div {
     padding: 40px 50px;
 
+    >ul, >p {
+        margin: 0;
+    }
+}
+
+header
+{
+    position: fixed;
+    top: 0;
+    width: 100%;
+
+    >nav {
     >ul {
         list-style: none;
         padding-inline-start: 0;
         display: flex;
+        align-items: center;
         gap: 50px;
 
         >li>a {
@@ -52,7 +90,6 @@ nav {
 
         >li:not(:first-of-type)>a {
             color: var(--colour-text);
-            font-size: 14px;
 
             &:hover {
                 font-style: italic;
@@ -69,7 +106,17 @@ nav {
 
             >a {
                 color: var(--colour-primary);
+
+                &:hover{
+                    font-style: normal;
+                }
             }
         }
     }
+}}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
