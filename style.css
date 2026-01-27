@@ -50,7 +50,7 @@ body {
     padding: 0;
     font-family: var(--font-main);
     font-size: 14px;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 a {
@@ -76,7 +76,8 @@ footer>div {
 header {
     position: fixed;
     top: 0;
-    width: 100%;
+    width: 100vw;
+    z-index: 2;
 
     >nav {
         >ul {
@@ -119,9 +120,7 @@ header {
 }
 
 footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
+    width: 100vw;
 
     >div {
         display: flex;
@@ -143,12 +142,6 @@ iconify-icon {
 }
 
 main {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    height: auto;
     padding: 100px 15px;
     overflow: hidden;
 }
@@ -156,6 +149,11 @@ main {
 body#home div:has(>h1) {
     margin-left: 20vw;
     margin-top: 10vh;
+}
+
+body#about-me div:has(>h1) {
+    text-align: center;
+    margin-top: 150px;
 }
 
 h1 {
@@ -203,6 +201,91 @@ h1 {
         }
     }
 }
+
+#photo-album {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    margin: 100px 0;
+
+    >img {
+        height: 150px;
+        width: 150px;
+        border-radius: 15px;
+        background-color: var(--colour-text-light);
+        margin: 0 -20px;
+        cursor: pointer;
+        transition: 150ms;
+
+        &:hover {
+            transform: translateY(-5px);
+        }
+
+        &:nth-of-type(1) {
+            rotate: -7deg;
+        }
+
+        &:nth-of-type(2) {
+            rotate: -7deg;
+            height: 175px;
+            width: 175px;
+            margin-bottom: 25px;
+        }
+
+        &:nth-of-type(3) {
+            rotate: -5deg;
+        }
+
+        &:nth-of-type(4) {
+            rotate: 0deg;
+        }
+
+        &:nth-of-type(5) {
+            rotate: 5deg;
+        }
+
+        &:nth-of-type(6) {
+            rotate: 7deg;
+        }
+
+        &:nth-of-type(7) {
+            rotate: 9deg;
+            height: 175px;
+            width: 175px;
+            margin-bottom: 5px;
+        }
+    }
+}
+
+body#about-me main .section {
+    text-align: center;
+    width: 750px;
+    margin: auto;
+
+    &:not(:last-of-type) {
+
+        margin-bottom: 65px;
+    }
+
+    & p,
+    h3 {
+        margin: 20px 0;
+    }
+
+    & ul {
+        list-style: none;
+        padding-inline-start: 0;
+        width: 500px;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        row-gap: 10px;
+        column-gap: 50px;
+    }
+}
+
+
 
 @keyframes scroll {
     from {
