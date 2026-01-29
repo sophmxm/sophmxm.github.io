@@ -101,11 +101,14 @@ window.onresize = calcMainMinHeight;
 function scrollProjectsPreviewHorizontal() {
 	let container = projects_preview.children[0];
 	let container_width = container.clientWidth;
+	let single_container_width = container_width / 3;
 
-	let current_scroll_x = (container_width / 3) * -1;
+	let current_scroll_x = single_container_width * -1;
 	let offset_scroll_x = 0;
 
 	container.style.transform = `translateX(${current_scroll_x}px)`;
+
+	console.log(container_width, single_container_width / 2);
 
 	let time_length = 0.02;
 	let keyframes_speed = 5;
@@ -129,6 +132,14 @@ function scrollProjectsPreviewHorizontal() {
 				current_speed = Math.min(time_length * 5, 1);
 			} else {
 				current_speed = time_length;
+			}
+
+			if (current_scroll_x > (single_container_width / 2) * -1) {
+				current_scroll_x = (single_container_width / 2 + single_container_width) * -1;
+				container.style.transform = `translateX(${current_scroll_x}px)`;
+			} else if (current_scroll_x < (single_container_width + single_container_width / 2) * -1) {
+				current_scroll_x = (single_container_width - single_container_width / 2) * -1;
+				container.style.transform = `translateX(${current_scroll_x}px)`;
 			}
 
 			current_scroll_x = current_scroll_x + offset_scroll_x * movemove_length;
