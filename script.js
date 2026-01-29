@@ -4,13 +4,61 @@
 const main = document.getElementsByTagName("main")[0];
 const header = document.getElementsByTagName("header")[0];
 const footer = document.getElementsByTagName("footer")[0];
-let projects_preview = document.getElementById("projects-previews");
+let projects_preview = document.getElementById("projects-preview");
 
 // Arrays and objects
 const social_links = [
 	{ type: "email", text: "sophmxm@gmail.com", link: "mailto:sophmxm@gmail.com", icon: "ic:round-email" },
 	{ type: "linkedin", text: "linkedin.com/sophmxm", link: "https://www.linkedin.com/in/sophmxm/", icon: "mdi:linkedin" },
 ];
+
+const projects_preview_list = {
+	template: {
+		img: { src: "", alt: "" },
+		title: "",
+		subtitle: "",
+		tags: [],
+		description: "",
+	},
+	meowtropolis: {
+		img: { src: "resources/previews/kkb385/homepage.png", alt: "" },
+		title: "Meowtropolis",
+		subtitle: "Capstone project",
+		tags: ["Web design and development", "JavaScript", "Team project"],
+		description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+	},
+	catchnbake: {
+		img: { src: "resources/previews/dxb211-a2-2.png", alt: "" },
+		title: "CATch 'n Bake",
+		subtitle: "Creative coding",
+		tags: ["p5.js", "Illustration"],
+		description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim iusto velit blanditiis asperiores quam!",
+	},
+	petsnearme: {
+		img: { src: "resources/previews/dxb111-a2-1.png", alt: "" },
+		title: "Pets Near Me",
+		subtitle: "Web design",
+		tags: ["Web design and development"],
+		description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim iusto velit blanditiis asperiores quam!",
+	},
+	reactapp: {
+		img: { src: "resources/previews/cab230-a2-2.png", alt: "" },
+		title: "React App",
+		subtitle: "React and REST API",
+		tags: [],
+		description: "",
+	},
+	saladprototype: {
+		img: { src: "resources/previews/dxb110-a2_preview.png", alt: "" },
+		title: "Who says?",
+		subtitle: "Interaction design",
+		tags: [],
+		description: "",
+	},
+};
+
+// Remove template from object
+delete projects_preview_list.template;
 
 // Initiate page
 createHeader();
@@ -90,6 +138,50 @@ function createSocialIconsList() {
 			icon.icon = item.icon;
 			link.appendChild(icon);
 		});
+	});
+}
+
+function createProjectsPreview() {
+	let container = projects_preview.children[0];
+
+	Object.values(projects_preview_list).forEach((item) => {
+		let div = document.createElement("div");
+		container.appendChild(div);
+
+		let image = document.createElement("img");
+		image.src = item.img.src;
+		image.alt = item.img.alt;
+		div.appendChild(image);
+
+		if (item.title != null && item.tags != null && item.description != null) {
+			let overlay = document.createElement("div");
+			div.appendChild(overlay);
+
+			let title = document.createElement("h3");
+			title.innerText = item.title;
+			overlay.appendChild(title);
+
+			if (item.subtitle != null && item.subtitle != "") {
+				let subtitle = document.createElement("span");
+				subtitle.innerText = item.subtitle;
+				overlay.appendChild(subtitle);
+			}
+
+			let list = document.createElement("ul");
+			overlay.appendChild(list);
+
+			if (item.tags != null) {
+				item.tags.forEach((tag) => {
+					let list_item = document.createElement("li");
+					list_item.innerText = tag;
+					list.appendChild(list_item);
+				});
+			}
+
+			let description = document.createElement("p");
+			description.innerText = item.description;
+			overlay.appendChild(description);
+		}
 	});
 }
 
@@ -177,6 +269,10 @@ function scrollProjectsPreviewHorizontal() {
 
 // If projects preview exists on page, run functions after delay/page loads
 if (projects_preview != null && projects_preview != undefined) {
+	for (let i = 0; i < 3; i++) {
+		createProjectsPreview();
+	}
+
 	setTimeout(() => {
 		scrollProjectsPreviewHorizontal();
 	}, 450);
