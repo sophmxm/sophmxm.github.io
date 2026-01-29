@@ -3,6 +3,7 @@
 const main = document.getElementsByTagName("main")[0];
 const header = document.getElementsByTagName("header")[0];
 const footer = document.getElementsByTagName("footer")[0];
+let projects_preview = document.getElementById("projects-previews");
 
 const social_links = [
 	{ type: "email", text: "sophmxm@gmail.com", link: "mailto:sophmxm@gmail.com", icon: "ic:round-email" },
@@ -91,8 +92,64 @@ function calcMainMinHeight() {
 
 	main.style.minHeight = `${min_main_height}px`;
 
-	console.log(win_height, footer_height, min_main_height)
+	console.log(win_height, footer_height, min_main_height);
 }
 
-calcMainMinHeight()
+calcMainMinHeight();
 window.onresize = calcMainMinHeight;
+
+function scrollProjectsPreviewHorizontal() {
+	let container = projects_preview.children[0];
+	let container_width = container.clientWidth;
+
+	let current_scroll_x = (container_width / 3) * -1;
+	let offset_scroll_x = 0;
+
+	container.style.transform = `translateX(${current_scroll_x}px)`;
+
+	let time_length = 0.02;
+	let keyframes_speed = 5;
+	let movemove_length = 10;
+	let current_speed = time_length;
+
+	window.addEventListener("wheel", function (e) {
+		if (e.deltaY > 0) offset_scroll_x += 1;
+		else offset_scroll_x -= 1;
+
+		if (offset_scroll_x > 1) {
+			offset_scroll_x = 2;
+		} else if (offset_scroll_x < -1) {
+			offset_scroll_x = -2;
+		}
+	});
+
+	setInterval(() => {
+		if (offset_scroll_x != 0) {
+			if (offset_scroll_x > 0.5 || offset_scroll_x < -0.5) {
+				current_speed = Math.min(time_length * 5, 1);
+			} else {
+				current_speed = time_length;
+			}
+
+			current_scroll_x = current_scroll_x + offset_scroll_x * movemove_length;
+			offset_scroll_x = Math.round((offset_scroll_x - Math.sign(offset_scroll_x) * current_speed) * 100) / 100;
+
+			container.style.transform = `translateX(${current_scroll_x}px)`;
+		}
+	}, keyframes_speed);
+}
+
+function loopProjectsPreviewScroll() {
+	/* window.addEventListener("wheel", function (e) {
+		setTimeout(() => {
+			console.log(projects_preview.scrollLeft, projects_preview.children[0].children[1].getBoundingClientRect());
+		}, 500);
+	}); */
+}
+
+if (projects_preview != null && projects_preview != undefined) {
+	setTimeout(() => {
+		scrollProjectsPreviewHorizontal();
+		loopProjectsPreviewScroll();
+	}, 450);
+}

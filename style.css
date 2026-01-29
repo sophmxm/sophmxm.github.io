@@ -51,7 +51,14 @@ body {
     padding: 0;
     font-family: var(--font-main);
     font-size: 14px;
+    position: relative;
     min-height: 100vh;
+}
+
+html:has(body#home), body#home {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
 }
 
 a {
@@ -182,6 +189,10 @@ h1 {
     position: absolute;
     bottom: calc(100px + 5vh);
     height: 200px;
+    width: 100vw;
+    overflow-y: hidden;
+    overflow-x: auto;
+    /* scrollbar-width: none; */
     margin: 50px 0;
 
     >div {
@@ -189,7 +200,7 @@ h1 {
         left: 0;
         height: 100%;
         display: flex;
-        animation: slide_right 500ms ease-out;
+        animation: slide_right_projects_preview 500ms ease-out;
         /* animation: scroll 200s linear infinite; */
 
         >div {
@@ -410,14 +421,14 @@ body#about-me main .section {
     }
 }
 
-@keyframes slide_right {
+@keyframes slide_right_projects_preview {
     from {
         transform: translateX(-100px);
         opacity: 0;
     }
 
     to {
-        transform: translateX(0);
+        transform: translateX(-33%);
         opacity: 1;
     }
 }
