@@ -206,7 +206,11 @@ h1 {
         animation: slide_right_projects_preview 500ms ease-out;
         /* animation: scroll 200s linear infinite; */
 
-        >div {
+        >a {
+            display: block;
+            text-decoration: none;
+            font-style: normal;
+            color: inherit;
             position: relative;
             border-radius: 10px;
 
@@ -269,8 +273,8 @@ h1 {
                     column-gap: 15px;
                     row-gap: 5px;
                     font-size: 12px;
-                    margin-top: 10px;
-                    margin-bottom: 12px;
+                    margin-top: 5px;
+                    margin-bottom: 10px;
 
                     >li {
                         padding: 5px 8px;

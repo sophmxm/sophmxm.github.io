@@ -19,41 +19,42 @@ const projects_preview_list = {
 		subtitle: "",
 		tags: [],
 		description: "",
+		link: "",
 	},
 	meowtropolis: {
 		img: { src: "resources/previews/kkb385/homepage.png", alt: "" },
 		title: "Meowtropolis",
 		subtitle: "Capstone project",
-		tags: ["Web design and development", "JavaScript", "Team project"],
-		description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+		tags: ["HTML and CSS", "JavaScript", "Team project"],
+		description: "An interactive, graphics-focused website that features characters based on real-life adoptable cats from AWLQ.",
 	},
 	catchnbake: {
 		img: { src: "resources/previews/dxb211-a2-2.png", alt: "" },
 		title: "CATch 'n Bake",
 		subtitle: "Creative coding",
 		tags: ["p5.js", "Illustration"],
-		description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim iusto velit blanditiis asperiores quam!",
+		description: "A minigame that was produced for an exhibition in Fortitude Valley with the goal of interesting and engaging visitors to the lane. ",
 	},
 	petsnearme: {
 		img: { src: "resources/previews/dxb111-a2-1.png", alt: "" },
 		title: "Pets Near Me",
 		subtitle: "Web design",
-		tags: ["Web design and development"],
-		description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim iusto velit blanditiis asperiores quam!",
+		tags: ["HTML and CSS", "Web design", "WCAG"],
+		description: "An accessible, screen reader-friendly web-based prototype made for local children who have an interest in animals and/or own a pet.",
 	},
 	reactapp: {
 		img: { src: "resources/previews/cab230-a2-2.png", alt: "" },
 		title: "React App",
-		subtitle: "React and REST API",
-		tags: [],
-		description: "",
+		subtitle: "React + REST API",
+		tags: ["React", "REST API"],
+		description: "A React-based web app that allows users to view and analyse data about volcanoes via a REST API.",
 	},
 	saladprototype: {
 		img: { src: "resources/previews/dxb110-a2_preview.png", alt: "" },
 		title: "Who says?",
-		subtitle: "Interaction design",
-		tags: [],
-		description: "",
+		subtitle: "Prototype",
+		tags: ["UX / UI", "Figma", "Prototyping"],
+		description: "An interactive prototype made for and order-online, healthy-fast-food business mock design brief.",
 	},
 };
 
@@ -145,17 +146,18 @@ function createProjectsPreview() {
 	let container = projects_preview.children[0];
 
 	Object.values(projects_preview_list).forEach((item) => {
-		let div = document.createElement("div");
-		container.appendChild(div);
+		let link = document.createElement("a");
+		link.href = "#";
+		container.appendChild(link);
 
 		let image = document.createElement("img");
 		image.src = item.img.src;
 		image.alt = item.img.alt;
-		div.appendChild(image);
+		link.appendChild(image);
 
 		if (item.title != null && item.tags != null && item.description != null) {
 			let overlay = document.createElement("div");
-			div.appendChild(overlay);
+			link.appendChild(overlay);
 
 			let title = document.createElement("h3");
 			title.innerText = item.title;
