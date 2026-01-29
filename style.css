@@ -89,6 +89,9 @@ header {
 
             >li>a {
                 text-decoration: none;
+                padding: 2px;
+                border-radius: 2px;
+                background-color: var(--colour-background);
             }
 
             >li:not(:first-of-type)>a {
@@ -121,6 +124,8 @@ header {
 
 footer {
     width: 100vw;
+    height: 106px;
+    z-index: 2;
 
     >div {
         display: flex;
@@ -280,12 +285,54 @@ body#about-me main .section {
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
-        row-gap: 10px;
-        column-gap: 50px;
+        row-gap: 15px;
+        column-gap: 20px;
+
+        >li {
+            padding: 5px 10px;
+            background-color: var(--colour-background);
+            border: 1px var(--colour-text) solid;
+            border-radius: 10px;
+            cursor: default;
+
+            &:hover {
+                background-color: var(--colour-primary);
+                color: var(--colour-background);
+                border-color: var(--colour-primary);
+            }
+        }
     }
 }
 
+#border {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border: 10px var(--colour-background) solid;
+    user-select: none;
+    pointer-events: none;
+    z-index: 3;
+}
 
+/* body {
+    & header {
+        background-color: var(--colour-background);
+        border-bottom: 1px var(--colour-text) solid;
+    }
+
+    & footer {
+        position: fixed;
+        bottom: 0;
+        background-color: var(--colour-background);
+        border-top: 1px var(--colour-text) solid;
+    }
+
+    & #border {
+        box-shadow: inset 1px 1px 0 var(--colour-text), inset -1px -1px 0 var(--colour-text);
+    }
+} */
 
 @keyframes scroll {
     from {

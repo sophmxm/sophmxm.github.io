@@ -1,5 +1,9 @@
 "use strict";
 
+const main = document.getElementsByTagName("main")[0];
+const header = document.getElementsByTagName("header")[0];
+const footer = document.getElementsByTagName("footer")[0];
+
 const social_links = [
 	{ type: "email", text: "sophmxm@gmail.com", link: "mailto:sophmxm@gmail.com", icon: "ic:round-email" },
 	{ type: "linkedin", text: "linkedin.com/sophmxm", link: "https://www.linkedin.com/in/sophmxm/", icon: "mdi:linkedin" },
@@ -10,8 +14,6 @@ createFooter();
 createSocialIconsList();
 
 function createHeader() {
-	const header = document.getElementsByTagName("header")[0];
-
 	const nav_links = [
 		{ text: "Sophie Martin", link: "/" },
 		{ text: "My stuff", link: "#" },
@@ -37,8 +39,6 @@ function createHeader() {
 }
 
 function createFooter() {
-	const footer = document.getElementsByTagName("footer")[0];
-
 	let footer_container = document.createElement("div");
 	footer.appendChild(footer_container);
 
@@ -81,3 +81,18 @@ function createSocialIconsList() {
 		});
 	});
 }
+
+function calcMainMinHeight() {
+	let win_height = window.innerHeight;
+	let main_padding_y = [window.getComputedStyle(main).getPropertyValue("padding-top").slice(0, -2), window.getComputedStyle(main).getPropertyValue("padding-bottom").slice(0, -2)];
+	let footer_height = footer.offsetHeight;
+
+	let min_main_height = win_height - main_padding_y[0] - main_padding_y[1] - footer_height;
+
+	main.style.minHeight = `${min_main_height}px`;
+
+	console.log(win_height, footer_height, min_main_height)
+}
+
+calcMainMinHeight()
+window.onresize = calcMainMinHeight;
