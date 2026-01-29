@@ -242,20 +242,27 @@ h1 {
                 border-radius: inherit;
                 border: 1px solid var(--colour-text);
                 background-color: var(--colour-background);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
                 cursor: pointer;
 
-                >h3,
-                p {
+                h3 {
                     margin: 0;
                     margin-bottom: 10px;
                 }
 
-                >h3:has(+span),
-                >h3+span {
+                p {
+                    margin: 0;
+                    margin-bottom: 5px;
+                }
+
+                h3:has(+span),
+                h3+span {
                     display: inline-block;
                 }
 
-                >h3+span {
+                h3+span {
                     margin-left: 10px;
                     color: var(--colour-text-light);
 

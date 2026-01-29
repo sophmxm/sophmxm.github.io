@@ -52,8 +52,8 @@ const projects_preview_list = {
 	saladprototype: {
 		img: { src: "resources/previews/dxb110-a2_preview.png", alt: "" },
 		title: "Who says?",
-		subtitle: "Prototype",
-		tags: ["UX / UI", "Figma", "Prototyping"],
+		subtitle: "UI / UX",
+		tags: ["UX / UI", "Figma", "Prototyping", "User-centered design"],
 		description: "An interactive prototype made for and order-online, healthy-fast-food business mock design brief.",
 	},
 };
@@ -159,14 +159,17 @@ function createProjectsPreview() {
 			let overlay = document.createElement("div");
 			link.appendChild(overlay);
 
+			let heading = document.createElement("div");
+			overlay.appendChild(heading);
+
 			let title = document.createElement("h3");
 			title.innerText = item.title;
-			overlay.appendChild(title);
+			heading.appendChild(title);
 
 			if (item.subtitle != null && item.subtitle != "") {
 				let subtitle = document.createElement("span");
 				subtitle.innerText = item.subtitle;
-				overlay.appendChild(subtitle);
+				heading.appendChild(subtitle);
 			}
 
 			let list = document.createElement("ul");
