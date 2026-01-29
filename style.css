@@ -36,7 +36,8 @@
 :root {
     --colour-background: #ffffff;
     --colour-text: #000000;
-    --colour-text-light: #aaaaaa;
+    --colour-text-light: #777777;
+    --colour-text-lighter: #aaaaaa;
     --colour-primary: #8da83f;
     --colour-primary-dark: #668118;
 
@@ -188,20 +189,85 @@ h1 {
         left: 0;
         height: 100%;
         display: flex;
-        animation: scroll 100s linear infinite;
+        animation: slide_right 500ms ease-out;
+        /* animation: scroll 200s linear infinite; */
 
         >div {
+            position: relative;
             margin-right: 50px;
+            border-radius: 10px;
 
-            &:hover>img {
-                transform: scale(1.05);
+            &:hover:has(>div)>img {
+                opacity: 0;
+                pointer-events: none;
             }
 
             >img {
+                position: relative;
+                z-index: 2;
                 height: 100%;
-                border-radius: 2px;
-                transition: 500ms ease-in-out;
+                border-radius: inherit;
+                transition: 100ms ease-in-out;
                 cursor: pointer;
+            }
+
+            >div {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                padding: 20px;
+                border-radius: inherit;
+                border: 1px solid var(--colour-text);
+                background-color: var(--colour-background);
+                cursor: pointer;
+
+                >h3,
+                p {
+                    margin: 0;
+                    margin-bottom: 10px;
+                }
+
+                >h3:has(+span),
+                >h3+span {
+                    display: inline-block;
+                }
+
+                >h3+span {
+                    margin-left: 10px;
+                    color: var(--colour-text-light);
+
+                    &::before {
+                        content: "\2022";
+                        margin-right: 10px;
+                    }
+                }
+
+                >ul {
+                    list-style: none;
+                    padding-inline-start: 0;
+                    display: flex;
+                    flex-wrap: wrap;
+                    column-gap: 15px;
+                    row-gap: 5px;
+                    font-size: 12px;
+                    margin-top: 10px;
+                    margin-bottom: 12px;
+
+                    >li {
+                        padding: 5px 8px;
+                        margin: 0 -4px;
+                        background-color: var(--colour-background);
+                        border: 1px solid var(--colour-text);
+                        border-radius: 5px;
+                        cursor: default;
+
+                        &:hover {
+                            background-color: var(--colour-primary);
+                            color: var(--colour-background);
+                            border-color: var(--colour-primary);
+                        }
+                    }
+                }
             }
         }
     }
@@ -341,5 +407,17 @@ body#about-me main .section {
 
     to {
         transform: translateX(-50%);
+    }
+}
+
+@keyframes slide_right {
+    from {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
     }
 }
