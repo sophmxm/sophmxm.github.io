@@ -212,8 +212,8 @@ function calcMainMinHeight() {
 }
 
 // Calculate minimum main element height on page load and on window resize
-calcMainMinHeight();
-window.onresize = calcMainMinHeight;
+/* calcMainMinHeight();
+window.onresize = calcMainMinHeight; */
 
 function scrollProjectsPreviewHorizontal() {
 	// Container variables
