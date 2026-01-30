@@ -197,24 +197,6 @@ function createProjectsPreview() {
 	});
 }
 
-// Calculate minimum main element height
-function calcMainMinHeight() {
-	// Element height variables
-	let win_height = window.innerHeight;
-	let main_padding_y = [window.getComputedStyle(main).getPropertyValue("padding-top").slice(0, -2), window.getComputedStyle(main).getPropertyValue("padding-bottom").slice(0, -2)];
-	let footer_height = footer.offsetHeight;
-
-	// Minimum main height
-	let min_main_height = win_height - main_padding_y[0] - main_padding_y[1] - footer_height;
-
-	// Set style
-	main.style.minHeight = `${min_main_height}px`;
-}
-
-// Calculate minimum main element height on page load and on window resize
-/* calcMainMinHeight();
-window.onresize = calcMainMinHeight; */
-
 function scrollProjectsPreviewHorizontal() {
 	// Container variables
 	let container = projects_preview.children[0];
