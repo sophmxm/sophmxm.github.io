@@ -75,7 +75,7 @@ a {
 
 header>nav,
 footer>div {
-    padding: 40px 50px;
+    padding: 35px 50px;
 
     >ul,
     >p {
@@ -87,6 +87,7 @@ header {
     position: fixed;
     top: 0;
     width: 100vw;
+    background-color: var(--colour-background);
     z-index: 2;
 
     >nav {
@@ -99,9 +100,6 @@ header {
 
             >li>a {
                 text-decoration: none;
-                padding: 2px;
-                border-radius: 2px;
-                background-color: var(--colour-background);
             }
 
             >li:not(:first-of-type)>a {
@@ -134,7 +132,6 @@ header {
 
 footer {
     width: 100vw;
-    height: 106px;
     z-index: 2;
 
     >div {
@@ -159,6 +156,9 @@ iconify-icon {
 main {
     padding: 100px 15px;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 body#home div:has(>h1) {
@@ -307,7 +307,8 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: end;
-    margin: 100px 0;
+    margin: 100px 100px;
+    min-width: 500px;
 
     >img {
         height: 150px;
@@ -360,7 +361,7 @@ h1 {
 
 body#about-me main .section {
     text-align: center;
-    width: 750px;
+    max-width: 750px;
     margin: auto;
 
     &:not(:last-of-type) {
@@ -376,7 +377,7 @@ body#about-me main .section {
     & ul {
         list-style: none;
         padding-inline-start: 0;
-        width: 500px;
+        max-width: 500px;
         margin: auto;
         display: flex;
         justify-content: center;
@@ -451,3 +452,86 @@ body#about-me main .section {
         opacity: 1;
     }
 }
+
+@media only screen and (max-width: 1024px) {
+
+    html:has(body#home),
+    body#home {
+        height: auto;
+        width: 100vw;
+        overflow: auto;
+    }
+
+    header>nav,
+    footer>div {
+        padding: 20px 30px;
+    }
+
+    header>nav {
+        background-color: var(--colour-background);
+    }
+
+    #projects-preview {
+        position: relative;
+        height: auto;
+        width: 100%;
+        margin-left: 50px;
+        margin-right: 50px;
+        margin-top: 50vh;
+
+        >div {
+            position: relative;
+            flex-wrap: wrap;
+            row-gap: 60px;
+            column-gap: 20px;
+            height: auto;
+            width: 100%;
+
+            >a {
+                width: calc(50% - 20px);
+
+                &:hover:has(>div)>img {
+                    opacity: 1;
+                    pointer-events: all;
+                }
+
+                >img {
+                    height: auto;
+                    width: 100%;
+                }
+
+                >div {
+                    position: relative;
+                    border: none;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    header>nav>ul {
+        gap: 10px;
+    }
+
+    body#about-me div:has(>h1) {
+        text-align: center;
+        margin-top: 80px;
+    }
+
+    #photo-album {
+        margin: 80px 50px;
+        flex-wrap: wrap;
+    }
+}
+
+@media only screen and (max-width: 600px) {}
+
+@media only screen and (max-width: 480px) {
+    footer>div {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+@media only screen and (max-width: 320px) {}

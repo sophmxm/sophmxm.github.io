@@ -6,6 +6,9 @@ const header = document.getElementsByTagName("header")[0];
 const footer = document.getElementsByTagName("footer")[0];
 let projects_preview = document.getElementById("projects-preview");
 
+// Global variables
+let over_1024;
+
 // Arrays and objects
 const social_links = [
 	{ type: "email", text: "sophmxm@gmail.com", link: "mailto:sophmxm@gmail.com", icon: "ic:round-email" },
@@ -54,7 +57,7 @@ const projects_preview_list = {
 		title: "Who says?",
 		subtitle: "UI / UX",
 		tags: ["UX / UI", "Figma", "Prototyping", "User-centered design"],
-		description: "An interactive prototype made for and order-online, healthy-fast-food business mock design brief.",
+		description: "An interactive prototype made for an order-online, healthy-fast-food business mock design brief.",
 	},
 };
 
@@ -65,6 +68,10 @@ delete projects_preview_list.template;
 createHeader();
 createFooter();
 createSocialIconsList();
+
+// Check window width
+if (window.innerWidth > 1024) over_1024 = true;
+else over_1024 = false;
 
 // Create header element
 function createHeader() {
@@ -274,11 +281,33 @@ function scrollProjectsPreviewHorizontal() {
 
 // If projects preview exists on page, run functions after delay/page loads
 if (projects_preview != null && projects_preview != undefined) {
-	for (let i = 0; i < 3; i++) {
-		createProjectsPreview();
-	}
+	createProjectsPreview();
 
-	setTimeout(() => {
-		scrollProjectsPreviewHorizontal();
-	}, 450);
+	// Check window width
+	if (window.innerWidth > 1024) {
+		// Create two more copies for infinite scroll
+		for (let i = 0; i < 2; i++) {
+			createProjectsPreview();
+		}
+
+		setTimeout(() => {
+			scrollProjectsPreviewHorizontal();
+		}, 450);
+	}
+}
+
+// Detect window width and reload if window goes over or under 1024px
+function detectWindowWidthOver1024() {
+	if (window.innerWidth > 1024 && over_1024 == false) {
+		over_1024 = true;
+		location.reload();
+	} else if (window.innerWidth <= 1024 && over_1024 == true) {
+		over_1024 = false;
+		location.reload();
+	}
+}
+
+// If projects preview exists on page, detect on window resize and reload
+if (projects_preview != null && projects_preview != undefined) {
+	window.onresize = detectWindowWidthOver1024;
 }
