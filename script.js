@@ -180,6 +180,7 @@ function createProjectsPreview() {
 			}
 
 			let list = document.createElement("ul");
+			list.classList.add("tags");
 			overlay.appendChild(list);
 
 			if (item.tags != null) {

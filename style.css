@@ -160,11 +160,6 @@ main {
     align-items: center;
 }
 
-/* body#home div:has(>h1) {
-    margin-left: 20vw;
-    margin-top: 10vh;
-} */
-
 body#home {
     display: flex;
     flex-direction: column;
@@ -174,10 +169,56 @@ body#home {
 body#home main {
     display: flex;
     justify-content: center;
+    margin-top: 100px;
 
-    >h1 {
+    >div:has(h1) {
         width: 100%;
-        margin-left: 200px;
+
+        /* >h1 {
+            font-size: 72px;
+            >span {
+                font-size: 32px;
+                transform: translateY(-8px);
+            }
+        } */
+
+        >h1,
+        >p,
+        >div {
+            margin-left: 150px;
+        }
+
+        >div {
+            display: flex;
+            gap: 10px;
+        }
+
+        ul {
+            list-style: none;
+            padding-inline-start: 0;
+            color: var(--colour-primary-dark);
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            text-align: end;
+
+            >li:first-of-type {
+                margin-top: -6px;
+                margin-bottom: 5px;
+                padding: 5px 10px;
+                color: var(--colour-text);
+                background-color: var(--colour-background);
+                border: 1px var(--colour-text) solid;
+                border-radius: 10px;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: var(--colour-primary);
+                    color: var(--colour-background);
+                    border-color: var(--colour-primary);
+                }
+            }
+        }
     }
 }
 
@@ -204,7 +245,7 @@ h1 {
 
 #projects-preview {
     position: relative;
-    height: 200px;
+    height: 250px;
     width: 100vw;
     overflow-y: hidden;
     overflow-x: auto;
@@ -286,30 +327,12 @@ h1 {
                     }
                 }
 
-                >ul {
-                    list-style: none;
-                    padding-inline-start: 0;
-                    display: flex;
-                    flex-wrap: wrap;
-                    column-gap: 15px;
-                    row-gap: 5px;
-                    font-size: 12px;
+                >.tags {
                     margin-top: 5px;
                     margin-bottom: 10px;
 
                     >li {
-                        padding: 5px 8px;
                         margin: 0 -4px;
-                        background-color: var(--colour-background);
-                        border: 1px solid var(--colour-text);
-                        border-radius: 5px;
-                        cursor: default;
-
-                        &:hover {
-                            background-color: var(--colour-primary);
-                            color: var(--colour-background);
-                            border-color: var(--colour-primary);
-                        }
                     }
                 }
             }
@@ -388,29 +411,43 @@ body#about-me main .section {
         margin: 20px 0;
     }
 
-    & ul {
-        list-style: none;
-        padding-inline-start: 0;
+    & .tags {
         max-width: 500px;
         margin: auto;
-        display: flex;
         justify-content: center;
-        flex-wrap: wrap;
         row-gap: 15px;
         column-gap: 20px;
+        font-size: inherit;
 
         >li {
             padding: 5px 10px;
-            background-color: var(--colour-background);
-            border: 1px var(--colour-text) solid;
             border-radius: 10px;
-            cursor: default;
+        }
+    }
+}
 
-            &:hover {
-                background-color: var(--colour-primary);
-                color: var(--colour-background);
-                border-color: var(--colour-primary);
-            }
+.tags {
+    list-style: none;
+    padding-inline-start: 0;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 15px;
+    row-gap: 5px;
+    font-size: 12px;
+    margin: 12px 0 20px 0;
+
+    >li {
+        color: var(--colour-text);
+        background-color: var(--colour-background);
+        border: 1px solid var(--colour-text);
+        padding: 5px 8px;
+        border-radius: 5px;
+        cursor: default;
+
+        &:hover {
+            background-color: var(--colour-primary);
+            color: var(--colour-background);
+            border-color: var(--colour-primary);
         }
     }
 }
