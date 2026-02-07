@@ -70,8 +70,41 @@ createFooter();
 createSocialIconsList();
 
 // Check window width
-if (window.innerWidth > 1024) over_1024 = true;
+if (isWidth1024()) over_1024 = true;
 else over_1024 = false;
+
+// Check if the window width is 1024px or larger, returns bool
+function isWidth1024() {
+	if (window.innerWidth > 1024) {
+		return true;
+	} else return false;
+}
+
+// Expand image
+function expandImage(img_src) {
+	if (isWidth1024()) {
+		// Creates image preview
+		let img_preview = document.createElement("div");
+		img_preview.classList.add("img-preview");
+
+		let img = document.createElement("img");
+		img.src = img_src;
+		img_preview.appendChild(img);
+
+		document.body.appendChild(img_preview);
+
+		// Removes image preview on click
+		img_preview.addEventListener("click", function () {
+			img_preview.remove();
+		});
+	}
+}
+
+let img_lists = document.querySelectorAll("img");
+// For each image list, run function
+img.forEach((img_list_element) => {
+	expandImage(img_list_element);
+});
 
 // Create header element
 function createHeader() {
@@ -281,10 +314,10 @@ if (projects_preview != null && projects_preview != undefined) {
 
 // Detect window width and reload if window goes over or under 1024px
 function detectWindowWidthOver1024() {
-	if (window.innerWidth > 1024 && over_1024 == false) {
+	if (isWidth1024() && over_1024 == false) {
 		over_1024 = true;
 		location.reload();
-	} else if (window.innerWidth <= 1024 && over_1024 == true) {
+	} else if (!isWidth1024() && over_1024 == true) {
 		over_1024 = false;
 		location.reload();
 	}
