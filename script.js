@@ -25,7 +25,7 @@ const projects_preview_list = {
 		link: "",
 	},
 	meowtropolis: {
-		img: { src: "resources/previews/kkb385/homepage.png", alt: "" },
+		img: { src: "resources/previews/kkb385.png", alt: "" },
 		title: "Meowtropolis",
 		subtitle: "Capstone project",
 		tags: ["HTML and CSS", "JavaScript", "Team project"],
@@ -294,3 +294,18 @@ function detectWindowWidthOver1024() {
 if (projects_preview != null && projects_preview != undefined) {
 	window.onresize = detectWindowWidthOver1024;
 }
+
+function fillProjectsPage() {
+	let project = document.body.dataset.project;
+	let data = projects_preview_list[project];
+
+	document.getElementById("project-name").innerText = data.title;
+
+	data.tags.forEach((tag) => {
+		let li = document.createElement("li");
+		li.innerText = tag;
+		document.getElementById("project-tags").appendChild(li);
+	});
+}
+
+if (document.body.id == "project") fillProjectsPage();
