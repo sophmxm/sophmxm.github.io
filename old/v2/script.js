@@ -124,26 +124,6 @@ function isWidth1024() {
 	} else return false;
 }
 
-// Expand image
-function expandImage(img_src) {
-	if (isWidth1024()) {
-		// Creates image preview
-		let img_preview = document.createElement("div");
-		img_preview.classList.add("img-preview");
-
-		let img = document.createElement("img");
-		img.src = img_src;
-		img_preview.appendChild(img);
-
-		document.body.appendChild(img_preview);
-
-		// Removes image preview on click
-		img_preview.addEventListener("click", function () {
-			img_preview.remove();
-		});
-	}
-}
-
 // Expand image and rotate through list
 function expandImageList(img_list_element) {
 	// Keeps track of the current image that is being displayed
