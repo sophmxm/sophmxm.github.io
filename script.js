@@ -358,9 +358,13 @@ function expandImageList(img_list_element) {
 				if (e.target != img) {
 					// Remove image preview if clicked outside image
 					img_preview.remove();
-				} else if (img_list[current_img + 1] == null) {
-					// Remove image preview if no more images in list
+				} else if (img_list[current_img + 1] == null && !img_list_element.classList.contains("looping")) {
+					// Remove image preview if no more images in list and not looping
 					img_preview.remove();
+				} else if (img_list[current_img + 1] == null &&  img_list_element.classList.contains("looping")) {
+					// Loop to first image if no more images in list and looping
+					current_img = 0;
+					img.src = img_list[current_img].src;
 				} else {
 					// Else, rotate image preview to next image
 					current_img += 1;
