@@ -564,7 +564,8 @@ body#project main {
         }
     }
 
-    &.span-5, &.span-7 {
+    &.span-5,
+    &.span-7 {
         grid-template-columns: repeat(6, 1fr);
 
         >img {
@@ -773,6 +774,21 @@ figcaption {
         gap: 10px;
     }
 
+    #projects-preview {
+        >div>a {
+            width: 100%;
+        }
+
+        >div>a>div>p {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+    }
+
     body#about-me div:has(>h1) {
         text-align: center;
         margin-top: 80px;
@@ -785,7 +801,12 @@ figcaption {
 }
 
 /* Targets mobile devices in landscape mode */
-@media only screen and (max-width: 600px) {}
+@media only screen and (max-width: 600px) {
+    #projects-preview>div>a>div {
+        padding: 10px;
+        padding-top: 20px;
+    }
+}
 
 /* Targets mobile devices in portrait mode */
 @media only screen and (max-width: 480px) {
