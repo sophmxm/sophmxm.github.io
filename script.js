@@ -322,6 +322,11 @@ function expandImageList(img_list_element) {
 
 	let img_list = [...img_list_element.children];
 
+	// Filter out anything that is not image or div element (eg. figcaption)
+	img_list = img_list.filter((img) => {
+		return img.nodeName == "IMG" || img.nodeName == "DIV";
+	});
+
 	// For each child element in image list
 	for (let i = 0; i < img_list.length; i++) {
 		// Check if element is an image or not, continue if element is a div
@@ -361,7 +366,7 @@ function expandImageList(img_list_element) {
 				} else if (img_list[current_img + 1] == null && !img_list_element.classList.contains("looping")) {
 					// Remove image preview if no more images in list and not looping
 					img_preview.remove();
-				} else if (img_list[current_img + 1] == null &&  img_list_element.classList.contains("looping")) {
+				} else if (img_list[current_img + 1] == null && img_list_element.classList.contains("looping")) {
 					// Loop to first image if no more images in list and looping
 					current_img = 0;
 					img.src = img_list[current_img].src;
