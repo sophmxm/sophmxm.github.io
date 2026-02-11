@@ -582,16 +582,27 @@ body#project main {
 }
 
 .img-flex {
+    position: relative;
     display: flex;
     justify-content: center;
     gap: 10px;
     margin: 40px 0;
     max-width: 1200px;
 
+    &.keep-aspect {
+        flex-wrap: nowrap;
+
+        >figcaption {
+            position: absolute;
+            bottom: -24px;
+        }
+    }
+
     >img {
         height: 300px;
         object-fit: cover;
         border-radius: 5px;
+        transition: 350ms;
     }
 
     >figcaption {
@@ -602,24 +613,25 @@ body#project main {
         flex-wrap: wrap;
 
         &.col-2>img {
-            width: calc(50% - 10px * 1);
+            width: calc(50% - 10px / 2);
         }
 
         &.col-3>img {
-            width: calc(33% - 10px * 2);
+            width: calc(33% - 10px / 3);
         }
 
         &.col-4>img {
-            width: calc(25% - 10px * 3);
+            width: calc(25% - 10px * 0.8);
         }
 
         &.col-5>img {
-            width: calc(20% - 10px * 4);
+            width: calc(20% - 10px * 0.8);
         }
     }
 }
 
-.img-grid:has(>img:hover) img:not(:hover) {
+.img-grid.previewable:has(>img:hover) img:not(:hover),
+.img-flex.previewable:has(>img:hover) img:not(:hover) {
     transform: scale(0.98);
 }
 
@@ -627,7 +639,30 @@ body#project main {
     cursor: pointer;
 }
 
-p.center {
+div:has(iframe) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+
+    >iframe {
+        height: 300px;
+    }
+}
+
+#controls-grid-list {
+    >li {
+        >span {
+            display: inline-block;
+        }
+
+        >span:first-of-type {
+            width: 250px;
+        }
+    }
+}
+
+.center {
     text-align: center;
 }
 
