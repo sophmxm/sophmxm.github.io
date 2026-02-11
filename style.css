@@ -210,6 +210,33 @@ body#home main {
             }
         } */
 
+        >h1 {
+            display: inline-block;
+
+            +p {
+                display: inline-block;
+                margin-left: 15px;
+                transform: translateY(-6px);
+            }
+
+            +p+p {
+                font-size: 32px;
+                margin: 0;
+                margin-left: 150px;
+                font-weight: bold;
+            }
+        }
+
+        >div {
+            width: 500px;
+            color: #aaa;
+            line-height: 18px;
+
+            >p>span {
+                color: var(--colour-text);
+            }
+        }
+
         >h1,
         >p,
         >div {
