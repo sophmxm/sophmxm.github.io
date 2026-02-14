@@ -85,7 +85,7 @@ function createHeader() {
 	const nav_links = [
 		{ text: "Sophie Martin", link: "/" },
 		{ text: "My stuff", link: "#" },
-		{ text: "About me", link: "about-me.html" },
+		{ text: "About me", link: "/about-me.html" },
 		{ text: "Say hi", link: "#" },
 	];
 
