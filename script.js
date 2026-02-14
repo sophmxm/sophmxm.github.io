@@ -69,6 +69,25 @@ createHeader();
 createFooter();
 createSocialIconsList();
 
+// If projects preview exists on page, run functions after delay/page loads
+if (projects_preview != null && projects_preview != undefined) {
+	createProjectsPreview();
+
+	// Check window width
+	if (window.innerWidth > 1024) {
+		// Create two more copies for infinite scroll
+		for (let i = 0; i < 2; i++) {
+			createProjectsPreview();
+		}
+
+		setTimeout(() => {
+			scrollProjectsPreviewHorizontal();
+		}, 450);
+	}
+}
+
+revealElement();
+
 // Check window width
 if (isWidth1024()) over_1024 = true;
 else over_1024 = false;
@@ -153,6 +172,20 @@ function createSocialIconsList() {
 			icon.icon = item.icon;
 			link.appendChild(icon);
 		});
+	});
+}
+
+// Staggered reveal content effect
+function revealElement() {
+	// Get elements with class appear animation and main
+	let elements = document.querySelectorAll(".appear-animation, main:not(.no-animation)");
+
+	// For each element, stagger delay of children
+	elements.forEach((element) => {
+		for (let i = 0; i < element.children.length; i++) {
+			// Add animation delay effect to each section in content
+			element.children[i].style.animationDelay = `calc(350ms + ${i * 150}ms)`;
+		}
 	});
 }
 
@@ -269,23 +302,6 @@ function scrollProjectsPreviewHorizontal() {
 	}, keyframes_speed);
 }
 
-// If projects preview exists on page, run functions after delay/page loads
-if (projects_preview != null && projects_preview != undefined) {
-	createProjectsPreview();
-
-	// Check window width
-	if (window.innerWidth > 1024) {
-		// Create two more copies for infinite scroll
-		for (let i = 0; i < 2; i++) {
-			createProjectsPreview();
-		}
-
-		setTimeout(() => {
-			scrollProjectsPreviewHorizontal();
-		}, 450);
-	}
-}
-
 // Detect window width and reload if window goes over or under 1024px
 function detectWindowWidthOver1024() {
 	if (isWidth1024() && over_1024 == false) {
@@ -334,7 +350,7 @@ function fillProjectsPage(project) {
 }
 
 // Check if page is project, then fill
-checkIfProjectsPage()
+checkIfProjectsPage();
 
 // Expand image and rotate through list
 function expandImageList(img_list_element) {

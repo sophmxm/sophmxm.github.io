@@ -89,6 +89,12 @@ body#home {
     overflow: hidden;
 }
 
+.appear-animation>*, main:not(.no-animation)>* {
+    animation: 350ms appear-up;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+
 a {
     color: var(--colour-primary);
     text-decoration: underline;
@@ -771,6 +777,18 @@ figcaption {
 
     to {
         transform: translateX(-33%);
+        opacity: 1;
+    }
+}
+
+@keyframes appear-up {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
         opacity: 1;
     }
 }
