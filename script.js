@@ -300,12 +300,32 @@ function detectWindowWidthOver1024() {
 // If projects preview exists on page, detect on window resize and reload
 window.onresize = detectWindowWidthOver1024;
 
-function fillProjectsPage() {
-	let project = document.body.dataset.project;
+// If page is project, then fill
+function checkIfProjectsPage() {
+	// Get page href url
+	let href = window.location.href;
+	let is_project_page = href.includes("/projects/");
+
+	// Check if page is projects page
+	if (is_project_page) {
+		// Change body id to project for styling
+		document.body.id = "project";
+
+		// Get project id from href url
+		let project_id = href.match(/(?<=projects\/)(\w*)/gm);
+		fillProjectsPage(project_id);
+	}
+}
+
+// Fill projects page with project data
+function fillProjectsPage(project) {
+	// Get data
 	let data = projects_preview_list[project];
 
+	// Fill title
 	document.getElementById("project-name").innerText = data.title;
 
+	// Fill tags
 	data.tags.forEach((tag) => {
 		let li = document.createElement("li");
 		li.innerText = tag;
@@ -313,7 +333,8 @@ function fillProjectsPage() {
 	});
 }
 
-if (document.body.id == "project") fillProjectsPage();
+// Check if page is project, then fill
+checkIfProjectsPage()
 
 // Expand image and rotate through list
 function expandImageList(img_list_element) {
