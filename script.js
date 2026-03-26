@@ -22,7 +22,7 @@ const projects_preview_list = {
 		subtitle: "",
 		tags: [],
 		description: "",
-		link: "",
+		has_page: false,
 	},
 	meowtropolis: {
 		img: { src: "resources/previews/kkb385.png", alt: "" },
@@ -30,6 +30,7 @@ const projects_preview_list = {
 		subtitle: "Capstone project",
 		tags: ["HTML and CSS", "JavaScript", "Team project"],
 		description: "An interactive, graphics-focused website that features characters based on real-life adoptable cats from AWLQ.",
+		has_page: true,
 	},
 	catchnbake: {
 		img: { src: "resources/previews/dxb211-a2-2.png", alt: "" },
@@ -37,6 +38,7 @@ const projects_preview_list = {
 		subtitle: "Creative coding",
 		tags: ["p5.js", "Illustration"],
 		description: "A minigame that was produced for an exhibition in Fortitude Valley with the goal of interesting and engaging visitors to the lane. ",
+		has_page: true,
 	},
 	petsnearme: {
 		img: { src: "resources/previews/dxb111-a2-1.png", alt: "" },
@@ -44,6 +46,7 @@ const projects_preview_list = {
 		subtitle: "Web design",
 		tags: ["HTML and CSS", "Web design", "WCAG"],
 		description: "An accessible, screen reader-friendly web-based prototype made for local children who have an interest in animals and/or own a pet.",
+		has_page: false,
 	},
 	reactapp: {
 		img: { src: "resources/previews/cab230-a2-2.png", alt: "" },
@@ -51,6 +54,7 @@ const projects_preview_list = {
 		subtitle: "React + REST API",
 		tags: ["React", "REST API"],
 		description: "A React-based web app that allows users to view and analyse data about volcanoes via a REST API.",
+		has_page: false,
 	},
 	saladprototype: {
 		img: { src: "resources/previews/dxb110-a2_preview.png", alt: "" },
@@ -58,6 +62,7 @@ const projects_preview_list = {
 		subtitle: "UI / UX",
 		tags: ["UX / UI", "Figma", "Prototyping", "User-centered design"],
 		description: "An interactive prototype made for an order-online, healthy-fast-food business mock design brief.",
+		has_page: false,
 	},
 };
 
@@ -194,7 +199,8 @@ function createProjectsPreview() {
 
 	Object.values(projects_preview_list).forEach((item, i) => {
 		let link = document.createElement("a");
-		link.href = `/projects/${Object.keys(projects_preview_list)[i]}.html`;
+		if (item.has_page == true) link.href = `/projects/${Object.keys(projects_preview_list)[i]}.html`;
+		else link.href = "#";
 		container.appendChild(link);
 
 		let image = document.createElement("img");
@@ -424,3 +430,37 @@ if (isWidth1024()) {
 		expandImageList(img_list_element);
 	});
 }
+
+function mouseCreateShapes() {
+	let parent = document.getElementById("mouse-shapes");
+	let path = "resources/assets/images/stars/";
+	let images = ["star_large-1.png", "star_large-2.png", "star_large-3.png", "star_large-4.png", "star_small-1.png", "star_small-2.png"];
+
+	images.forEach((image) => {
+		let img_wrap = document.createElement("div");
+		parent.appendChild(img_wrap);
+
+		let img = document.createElement("img");
+		img.src = path + image;
+		img_wrap.appendChild(img);
+	});
+}
+
+mouseCreateShapes();
+
+function mouseClickShapes(e) {
+	let mouse_pos = { x: e.clientX, y: e.clientY };
+	let shapes = document.getElementById("mouse-shapes").childNodes;
+
+	shapes.forEach((shape) => {
+		shape = shape.childNodes[0];
+		let shape_size = { x: shape.offsetWidth, y: shape.offsetHeight };
+
+		/* shape.style.transform = `translate(calc(${mouse_pos.x}px - ${shape_size.x}px / 2), calc(${mouse_pos.y}px - ${shape_size.y}px / 2))`; */
+
+		shape.style.left = mouse_pos.x - shape_size.x / 2 + "px";
+		shape.style.top = mouse_pos.y - shape_size.y / 2 + "px";
+	});
+}
+
+document.addEventListener("click", mouseClickShapes);

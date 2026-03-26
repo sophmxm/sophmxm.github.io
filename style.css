@@ -89,7 +89,18 @@ body#home {
     overflow: hidden;
 }
 
-.appear-animation>*, main:not(.no-animation)>* {
+::selection {
+    color: white;
+    background-color: var(--colour-primary);
+}
+
+::-moz-selection {
+    color: white;
+    background-color: var(--colour-primary);
+}
+
+.appear-animation>*,
+main:not(.no-animation)>* {
     animation: 350ms appear-up;
     opacity: 0;
     animation-fill-mode: forwards;
@@ -703,6 +714,42 @@ figcaption {
     text-align: center;
     color: var(--colour-text-light);
     font-size: 12px;
+}
+
+#mouse-shapes {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    user-select: none;
+    pointer-events: none;
+    z-index: 4;
+
+    >div {
+        display: inline-block;
+    }
+
+    >div>img {
+        position: absolute;
+        transform: scale(0.5);
+        /* IE, only works on <img> tags */
+        -ms-interpolation-mode: nearest-neighbor;
+        /* Firefox */
+        image-rendering: crisp-edges;
+        /* Chromium + Safari */
+        image-rendering: pixelated;
+    }
+}
+
+@keyframes tink {
+    from {
+        transform: scale(0.4) translate(0);
+    }
+
+    to {
+        transform: scale(0.5) translate(-5px, -2px);
+    }
 }
 
 /* Border */
