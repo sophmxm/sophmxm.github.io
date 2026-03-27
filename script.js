@@ -453,13 +453,41 @@ function mouseClickShapes(e) {
 	let shapes = document.getElementById("mouse-shapes").childNodes;
 
 	shapes.forEach((shape) => {
-		shape = shape.childNodes[0];
-		let shape_size = { x: shape.offsetWidth, y: shape.offsetHeight };
+		let rand = Math.floor(Math.random() * (shapes.length / 2));
 
-		/* shape.style.transform = `translate(calc(${mouse_pos.x}px - ${shape_size.x}px / 2), calc(${mouse_pos.y}px - ${shape_size.y}px / 2))`; */
+		if (rand != 0) {
+			shape = shape.childNodes[0];
+			let shape_size = { x: shape.offsetWidth, y: shape.offsetHeight };
 
-		shape.style.left = mouse_pos.x - shape_size.x / 2 + "px";
-		shape.style.top = mouse_pos.y - shape_size.y / 2 + "px";
+			/* shape.style.transform = `translate(calc(${mouse_pos.x}px - ${shape_size.x}px / 2), calc(${mouse_pos.y}px - ${shape_size.y}px / 2))`; */
+
+			shape.style.left = mouse_pos.x - shape_size.x / 2 + "px";
+			shape.style.top = mouse_pos.y - shape_size.y / 2 + "px";
+
+			let min = 50;
+			let max = 100;
+
+			const disperse_anim = [
+				{
+					transform: "scale(0.4) translate(0, 0)",
+					opacity: 1,
+				},
+				{
+					transform: `scale(0.5) translate(
+				${(Math.floor(Math.random() * max) + min) * (Math.round(Math.random()) * 2 - 1)}px,
+				${(Math.floor(Math.random() * max) + min) * (Math.round(Math.random()) * 2 - 1)}px)`,
+					opacity: 0,
+				},
+			];
+
+			const disperse_timing = {
+				duration: 800,
+				iteration: 1,
+				easing: "ease-out",
+			};
+
+			shape.animate(disperse_anim, disperse_timing);
+		}
 	});
 }
 
