@@ -9,6 +9,9 @@ let projects_preview = document.getElementById("projects-preview");
 // Global variables
 let over_1024;
 
+// Options
+let mouse_shapes_enabled = true;
+
 // Arrays and objects
 const social_links = [
 	{ type: "email", text: "sophmxm@gmail.com", link: "mailto:sophmxm@gmail.com", icon: "ic:round-email" },
@@ -431,9 +434,17 @@ if (isWidth1024()) {
 	});
 }
 
-function mouseCreateShapes() {
+function createMouseShapesContainer() {
+	let container = document.createElement("div");
+	container.id = "mouse-shapes";
+	document.body.appendChild(container);
+}
+
+if (mouse_shapes_enabled == true) createMouseShapesContainer();
+
+function createMouseShapes() {
 	let parent = document.getElementById("mouse-shapes");
-	let path = "resources/assets/images/stars/";
+	let path = "/resources/assets/images/stars/";
 	let images = ["star_large-1.png", "star_large-2.png", "star_large-3.png", "star_large-4.png", "star_small-1.png", "star_small-2.png"];
 
 	images.forEach((image) => {
@@ -446,7 +457,7 @@ function mouseCreateShapes() {
 	});
 }
 
-mouseCreateShapes();
+createMouseShapes();
 
 function mouseClickShapes(e) {
 	let mouse_pos = { x: e.clientX, y: e.clientY };
