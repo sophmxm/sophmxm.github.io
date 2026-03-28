@@ -99,10 +99,10 @@ header {
     height: 100vh;
     width: 100vw;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-family: "Cat Song", serif;
-    font-size: 3.5em;
+    text-align: center;
 
     h1 {
         position: relative;
@@ -110,10 +110,13 @@ header {
         overflow: hidden;
         text-transform: uppercase;
         padding: 20px 15px 5px;
+        margin: 0;
+        font-family: "Cat Song", serif;
+        font-size: 7em;
         transition: 350ms ease-out;
         cursor: pointer;
 
-        &::after {
+        /* &::after {
             content: "";
             position: absolute;
             background-color: var(--txt-col);
@@ -131,7 +134,14 @@ header {
         &:hover::after {
             opacity: 1;
             transform: translateX(0);
-        }
+        } */
+    }
+
+    p {
+        margin: 0;
+        font-size: 1.5em;
+        text-transform: uppercase;
+        font-weight: 600;
     }
 }
 

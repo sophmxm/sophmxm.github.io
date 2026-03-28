@@ -1,5 +1,33 @@
 "use strict";
 
+const win_url = window.location.href;
+const main = document.getElementsByTagName("main")[0];
+
+// Nav items
+const nav = document.getElementById("nav-bar");
+const nav_items = [
+	["", "", ["mdi:star-four-points-outline", "mdi:star-four-points"]],
+	["me", "Me", ["mingcute:user-3-line", "mingcute:user-3-fill"]],
+	["my-stuff", "My stuff", ["mingcute:box-3-line", "mingcute:box-3-fill"]],
+	["contact", "Contact", ["mingcute:send-plane-line", "mingcute:send-plane-fill"]],
+];
+
+// Initialise home page sections
+let current_section = nav_items[0];
+
+function initialiseHomePage() {
+	let sections = document.querySelectorAll("main>section");
+
+	sections.forEach((section) => {
+		section.style.display = "none";
+	});
+
+	if (win_url.split("#")[1] != undefined) {
+		current_section = nav_items.filter((item) => item.includes(win_url.split("#")[1]))[0];
+		switchSection(current_section);
+	}
+}
+
 // Reveal element effect
 function revealElement(element) {
 	// Reset
@@ -29,25 +57,16 @@ function createSkillBars() {
 	});
 }
 
-const nav = document.getElementById("nav-bar");
-let currentSection = "me";
-
+// Create nav
 function createNav() {
 	const list = document.createElement("ul");
 	nav.appendChild(list);
 
-	const nav_items = [
-		["hero", "", ["mdi:star-four-points-outline", "mdi:star-four-points"]],
-		["me", "Me", ["mingcute:user-3-line", "mingcute:user-3-fill"]],
-		["my-stuff", "My stuff", ["mingcute:box-3-line", "mingcute:box-3-fill"]],
-		["contact", "Contact", ["mingcute:send-plane-line", "mingcute:send-plane-fill"]],
-	];
-
 	let nav_icons = [];
 
+	// For each nav item
 	nav_items.forEach((item) => {
-		let section = document.getElementById(item[0]);
-
+		// Create nav list item
 		let list_item = document.createElement("li");
 		list.appendChild(list_item);
 
@@ -66,48 +85,36 @@ function createNav() {
 
 		nav_icons.push([icon, item[2][0]]);
 
-		if (section != null) {
-			if (item[0] === "hero" || item[0] === currentSection) {
-				section.style.display = "";
-			} else {
-				section.style.display = "none";
-			}
-
-			link.onclick = () => {
-				revealElement(section);
-
-				// Set icon to selected section
-				deselectNavIcons(nav_icons);
-				icon.icon = item[2][1];
-
-				// Hide current section and display selected section
-				if (item[0] !== currentSection && item[0] !== "hero") {
-					hideCurrentSection(nav_items);
-
-					currentSection = item[0];
-					section.style.display = "";
-				}
-			};
-		}
+		// Nav list item on click
+		link.onclick = () => {
+			switchSection(item);
+		};
 	});
 }
 
-// Set nav icons to deselected icon
-function deselectNavIcons(nav_icons) {
-	nav_icons.forEach((icon) => {
-		icon[0].icon = icon[1];
-	});
-}
+// Switch section
+function switchSection(selected_section) {
+	// If section is not hero section
+	if (current_section[0] != "") {
+		// Hide previous current section
+		document.getElementById(current_section[0]).style.display = "none";
+	}
 
-// Hide the current section
-function hideCurrentSection(nav_items) {
-	// Get the nav item array of the current section
-	nav_items.forEach((item) => {
-		if (item.includes(currentSection)) {
-			// Hide section
-			document.getElementById(item[0]).style.display = "none";
-		}
-	});
+	// Deselect previous selected nav item
+	document.querySelector(`#nav-bar a[href='#${current_section[0]}']>iconify-icon`).icon = current_section[2][0];
+
+	// Update current section
+	current_section = selected_section;
+
+	// Select current selected nav item
+	document.querySelector(`#nav-bar a[href='#${selected_section[0]}']>iconify-icon`).icon = selected_section[2][1];
+
+	// Reveal selected section
+	if (selected_section[0] != "") {
+		let section = document.getElementById(selected_section[0]);
+		section.style.display = "";
+		revealElement(section);
+	}
 }
 
 // Check if the window width is 1024px or larger, returns bool
@@ -115,26 +122,6 @@ function isWidth1024() {
 	if (window.innerWidth >= 1024) {
 		return true;
 	} else return false;
-}
-
-// Expand image
-function expandImage(img_src) {
-	if (isWidth1024()) {
-		// Creates image preview
-		let img_preview = document.createElement("div");
-		img_preview.classList.add("img-preview");
-
-		let img = document.createElement("img");
-		img.src = img_src;
-		img_preview.appendChild(img);
-
-		document.body.appendChild(img_preview);
-
-		// Removes image preview on click
-		img_preview.addEventListener("click", function () {
-			img_preview.remove();
-		});
-	}
 }
 
 // Expand image and rotate through list
@@ -204,6 +191,7 @@ function expandImageList(img_list_element) {
 
 // Create components
 createNav();
+initialiseHomePage();
 
 if (skills) createSkillBars();
 

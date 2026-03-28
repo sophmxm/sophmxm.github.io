@@ -1,4 +1,4 @@
-# oddphie.github.io
+# sophmxm.github.io
 Hi, this is my portfolio 😊!!
 
 
