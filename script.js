@@ -11,6 +11,7 @@ let over_1024;
 
 // Options
 let mouse_shapes_enabled = true;
+let add_html_suffix = true;
 
 // Arrays and objects
 const social_links = [
@@ -107,12 +108,16 @@ function isWidth1024() {
 	} else return false;
 }
 
+function addFilenameSuffix(filename) {
+	return `${filename}${add_html_suffix ? ".html" : ""}`;
+}
+
 // Create header element
 function createHeader() {
 	const nav_links = [
 		{ text: "Sophie Martin", link: "/" },
 		{ text: "My stuff", link: "#" },
-		{ text: "About me", link: "/about-me.html" },
+		{ text: "About me", link: addFilenameSuffix("/about-me") },
 		{ text: "Say hi", link: "#" },
 	];
 
@@ -202,7 +207,7 @@ function createProjectsPreview() {
 
 	Object.values(projects_preview_list).forEach((item, i) => {
 		let link = document.createElement("a");
-		if (item.has_page == true) link.href = `/projects/${Object.keys(projects_preview_list)[i]}.html`;
+		if (item.has_page == true) link.href = `/projects/${addFilenameSuffix(Object.keys(projects_preview_list)[i])}`;
 		else link.href = "#";
 		container.appendChild(link);
 
