@@ -50,7 +50,7 @@ const projects_preview_list = {
 		subtitle: "Web design",
 		tags: ["HTML and CSS", "Web design", "WCAG"],
 		description: "An accessible, screen reader-friendly web-based prototype made for local children who have an interest in animals and/or own a pet.",
-		has_page: false,
+		has_page: true,
 	},
 	reactapp: {
 		img: { src: "resources/previews/cab230-a2-2.png", alt: "" },
