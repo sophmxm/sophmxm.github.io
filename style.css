@@ -544,7 +544,8 @@ body#project main {
         max-width: 1200px;
     }
 
-    >section:first-of-type {
+    >section:first-of-type,
+    >section.has-container {
         padding: 20px 30px;
         border: 1px solid var(--colour-text);
         border-radius: 10px;
@@ -560,6 +561,27 @@ body#project main {
     section>ul:not(.tags) {
         padding-inline-start: 30px;
         line-height: 24px;
+    }
+
+    section>ul.list-style-icons {
+        padding-inline-start: 15px;
+        line-height: 24px;
+    }
+
+    section>ul.list-style-icons>li {
+        background-repeat: no-repeat;
+        background-position: left 0 top 3px;
+        padding: 0 0 0 30px;
+        list-style: none;
+        margin: 8px 0;
+    }
+
+    h3:has(+.list-style-icons) {
+        margin-bottom: 15px;
+    }
+    
+    >.has-container>h3:first-of-type {
+        margin-top: 10px;
     }
 
     >section>h2 {
