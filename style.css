@@ -418,6 +418,7 @@ h1 {
     align-items: end;
     margin: 100px 100px;
     min-width: 500px;
+    user-select: none;
 
     >img {
         height: 150px;
