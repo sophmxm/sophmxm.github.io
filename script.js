@@ -116,9 +116,9 @@ function addFilenameSuffix(filename) {
 function createHeader() {
 	const nav_links = [
 		{ text: "Sophie Martin", link: "/" },
-		{ text: "My stuff", link: "#" },
+		{ text: "My stuff", link: "/" },
 		{ text: "About me", link: addFilenameSuffix("/about-me") },
-		{ text: "Say hi", link: "#" },
+		{ text: "Say hi", link: addFilenameSuffix("/contact-me") },
 	];
 
 	let nav = document.createElement("nav");
@@ -148,7 +148,7 @@ function createFooter() {
 
 	let link_contact = document.createElement("a");
 	link_contact.innerText = "Contact me";
-	link_contact.href = "#";
+	link_contact.href = addFilenameSuffix("/contact-me");
 
 	let link_resume = document.createElement("a");
 	link_resume.innerText = "download my resume";
@@ -179,6 +179,7 @@ function createSocialIconsList() {
 
 			let link = document.createElement("a");
 			link.href = item.link;
+			link.target = "_blank";
 			list_item.appendChild(link);
 
 			let icon = document.createElement("iconify-icon");
@@ -429,6 +430,50 @@ function expandImageList(img_list_element) {
 			});
 		};
 	}
+}
+
+createContactListButtons();
+
+function createContactListButtons() {
+	let list = document.getElementById("contact-list-btns");
+
+	// For each item in social links array
+	social_links.forEach((item) => {
+		// Create elements
+		let list_item = document.createElement("li");
+		list.appendChild(list_item);
+
+		let link = document.createElement("a");
+		link.href = item.link;
+		link.target = "_blank";
+		link.innerText = item.text;
+		list_item.appendChild(link);
+
+		let icon = document.createElement("iconify-icon");
+		icon.icon = item.icon;
+		link.prepend(icon);
+
+		if (item.type == "email") {
+			let copy_link = document.createElement("a");
+			copy_link.innerText = "Copy";
+			list_item.appendChild(copy_link);
+
+			let copy_icon = document.createElement("iconify-icon");
+			copy_icon.icon = "tabler:copy-filled";
+			copy_link.prepend(copy_icon);
+
+			// Copy the text inside the text field
+			copy_link.onclick = () => {
+				navigator.clipboard.writeText(item.text);
+
+				copy_link.innerHTML = copy_link.innerHTML.replace("Copy", "Copied!");
+
+				setTimeout(() => {
+					copy_link.innerHTML = copy_link.innerHTML.replace("Copied!", "Copy");
+				}, 2000);
+			};
+		}
+	});
 }
 
 if (isWidth1024()) {
