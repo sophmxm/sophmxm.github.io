@@ -11,7 +11,7 @@ let over_1024;
 
 // Options
 let mouse_shapes_enabled = true;
-let add_html_suffix = true;
+let add_html_suffix = false;
 
 // Arrays and objects
 const social_links = [
