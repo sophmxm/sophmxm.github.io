@@ -222,6 +222,7 @@ main.span {
 body#home main {
     >div:has(h1) {
         width: 100%;
+        margin-left: 150px;
 
         /* >h1 {
             font-size: 72px;
@@ -243,7 +244,6 @@ body#home main {
             +p+p {
                 font-size: 32px;
                 margin: 0;
-                margin-left: 150px;
                 font-weight: bold;
             }
         }
@@ -256,12 +256,6 @@ body#home main {
             >p>span {
                 color: var(--colour-text);
             }
-        }
-
-        >h1,
-        >p,
-        >div {
-            margin-left: 150px;
         }
 
         >div {
@@ -999,6 +993,15 @@ figcaption {
 
 /* Targets mobile devices in portrait mode */
 @media only screen and (max-width: 480px) {
+    body#home main>div:has(h1) {
+        margin-left: 0;
+        text-align: center;
+
+        >div {
+            width: auto;
+        }
+    }
+
     footer>div {
         flex-direction: column;
         gap: 20px;
