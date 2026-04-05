@@ -95,6 +95,10 @@ if (projects_preview != null && projects_preview != undefined) {
 	}
 }
 
+if (document.getElementById("contact-list-btns") != null && document.getElementById("contact-list-btns") != undefined) {
+	createContactListButtons();
+}
+
 revealElement();
 
 // Check window width
@@ -432,8 +436,6 @@ function expandImageList(img_list_element) {
 		};
 	}
 }
-
-createContactListButtons();
 
 function createContactListButtons() {
 	let list = document.getElementById("contact-list-btns");
