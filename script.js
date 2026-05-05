@@ -60,13 +60,13 @@ const projects_preview_list = {
 		description: "A React-based web app that allows users to view and analyse data about volcanoes via a REST API.",
 		has_page: true,
 	},
-	saladprototype: {
+	whosays: {
 		img: { src: "resources/previews/dxb110-a2_preview.png", alt: "" },
 		title: "Who says?",
 		subtitle: "UI / UX",
 		tags: ["UX / UI", "Figma", "Prototyping", "User-centered design"],
 		description: "An interactive prototype made for an order-online, healthy-fast-food business mock design brief.",
-		has_page: false,
+		has_page: true,
 	},
 };
 
