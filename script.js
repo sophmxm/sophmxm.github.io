@@ -58,7 +58,7 @@ const projects_preview_list = {
 		subtitle: "React + REST API",
 		tags: ["React", "REST API"],
 		description: "A React-based web app that allows users to view and analyse data about volcanoes via a REST API.",
-		has_page: false,
+		has_page: true,
 	},
 	saladprototype: {
 		img: { src: "resources/previews/dxb110-a2_preview.png", alt: "" },
@@ -497,7 +497,7 @@ if (mouse_shapes_enabled == true) createMouseShapesContainer();
 
 function createMouseShapes() {
 	let parent = document.getElementById("mouse-shapes");
-	let path = "./resources/assets/images/stars/";
+	let path = "/resources/assets/images/stars/";
 	let images = ["star_large-1.png", "star_large-2.png", "star_large-3.png", "star_large-4.png", "star_small-1.png", "star_small-2.png"];
 
 	images.forEach((image) => {
