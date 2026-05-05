@@ -629,6 +629,19 @@ body#project main {
         }
     }
 
+    &.span-3 {
+        grid-template-columns: repeat(2, 1fr);
+
+        >img {
+            grid-column: auto;
+        }
+
+        >img:nth-child(3) {
+            grid-column: auto / span 2;
+        }
+
+    }
+
     &.span-5,
     &.span-7 {
         grid-template-columns: repeat(6, 1fr);
