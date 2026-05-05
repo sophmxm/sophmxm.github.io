@@ -556,12 +556,3 @@ function mouseClickShapes(e) {
 }
 
 document.addEventListener("click", mouseClickShapes);
-
-function homepageTypewriterEffect() {
-	// First array starts with "an", second array starts with "a"
-	let types = [["interaction designer"], ["UX / UI designer", "graphic designer", "web designer", "frontend developer"]];
-
-	let element = document.getElementById("typewriter");
-
-	
-}

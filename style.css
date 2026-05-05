@@ -224,14 +224,6 @@ body#home main {
         width: 100%;
         margin-left: 150px;
 
-        /* >h1 {
-            font-size: 72px;
-            >span {
-                font-size: 32px;
-                transform: translateY(-8px);
-            }
-        } */
-
         >h1 {
             display: inline-block;
 
@@ -268,19 +260,17 @@ body#home main {
             padding-inline-start: 0;
             color: var(--colour-primary-dark);
             display: flex;
-            flex-direction: column;
-            gap: 3px;
-            text-align: end;
+            gap: 8px;
+            text-transform: capitalize;
 
-            >li:first-of-type {
-                margin-top: -6px;
-                margin-bottom: 5px;
+            >li {
                 padding: 5px 10px;
                 color: var(--colour-text);
                 background-color: var(--colour-background);
                 border: 1px var(--colour-text) solid;
                 border-radius: 10px;
-                cursor: pointer;
+                cursor: default;
+                user-select: none;
 
                 &:hover {
                     background-color: var(--colour-primary);
