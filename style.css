@@ -457,7 +457,7 @@ h1 {
     }
 }
 
-body#about-me main .section {
+body#about-me main section {
     text-align: center;
     max-width: 750px;
     margin: auto;
