@@ -755,6 +755,14 @@ figcaption {
         display: flex;
         justify-content: center;
 
+        &:has(>a:nth-of-type(2):hover)>a {
+            background-color: var(--colour-primary);
+            color: var(--colour-background);
+            border-color: var(--colour-primary);
+            font-style: italic;
+            text-decoration: underline;
+        }
+
         >a {
             color: var(--colour-text);
             background-color: var(--colour-background);
