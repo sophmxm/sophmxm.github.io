@@ -82,8 +82,8 @@ createSocialIconsList();
 if (projects_preview != null && projects_preview != undefined) {
 	createProjectsPreview();
 
-	// Check window width
-	if (window.innerWidth > 1024) {
+	// Check window width and scroll direction
+	if (window.innerWidth > 1024 && projects_preview.dataset.scrollDirection == "h-scroll") {
 		// Create two more copies for infinite scroll
 		for (let i = 0; i < 2; i++) {
 			createProjectsPreview();

@@ -400,6 +400,48 @@ h1 {
     }
 }
 
+#my-stuff {
+    
+}
+
+#projects-preview[data-scroll-direction="v-scroll"] {
+    position: relative;
+    height: auto;
+    width: 750px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 0;
+
+    >div {
+        position: relative;
+        flex-wrap: wrap;
+        row-gap: 60px;
+        column-gap: 20px;
+        height: auto;
+        width: 100%;
+
+        >a {
+            width: calc(50% - 20px);
+
+            &:hover:has(>div)>img {
+                opacity: 1;
+                pointer-events: all;
+            }
+
+            >img {
+                height: auto;
+                width: 100%;
+            }
+
+            >div {
+                position: relative;
+                border: none;
+            }
+        }
+    }
+}
+
+
 #photo-album {
     display: flex;
     justify-content: center;
