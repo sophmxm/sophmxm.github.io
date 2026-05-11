@@ -1,0 +1,104 @@
+div:has(>h1) {
+    text-align: center;
+    margin-top: 150px;
+}
+
+main section {
+    text-align: center;
+    max-width: 750px;
+    margin: auto;
+
+    &:not(:last-of-type) {
+
+        margin-bottom: 65px;
+    }
+
+    & p,
+    h3 {
+        margin: 20px 0;
+    }
+
+    & .tags {
+        max-width: 500px;
+        margin: auto;
+        justify-content: center;
+        row-gap: 15px;
+        column-gap: 20px;
+        font-size: inherit;
+
+        >li {
+            padding: 5px 10px;
+            border-radius: 10px;
+        }
+    }
+}
+
+#photo-album {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    margin: 100px 100px;
+    min-width: 500px;
+    user-select: none;
+
+    >img {
+        height: 150px;
+        width: 150px;
+        border-radius: 15px;
+        background-color: var(--colour-text-light);
+        margin: 0 -20px;
+        cursor: pointer;
+        transition: 150ms;
+
+        &:hover {
+            transform: translateY(-5px);
+        }
+
+        &:nth-of-type(1) {
+            rotate: -7deg;
+        }
+
+        &:nth-of-type(2) {
+            rotate: -7deg;
+            height: 175px;
+            width: 175px;
+            margin-bottom: 25px;
+        }
+
+        &:nth-of-type(3) {
+            rotate: -5deg;
+        }
+
+        &:nth-of-type(4) {
+            rotate: 0deg;
+        }
+
+        &:nth-of-type(5) {
+            rotate: 5deg;
+        }
+
+        &:nth-of-type(6) {
+            rotate: 7deg;
+        }
+
+        &:nth-of-type(7) {
+            rotate: 9deg;
+            height: 175px;
+            width: 175px;
+            margin-bottom: 5px;
+        }
+    }
+}
+
+/* Targets tablets in portrait mode */
+@media only screen and (max-width: 768px) {
+    div:has(>h1) {
+        text-align: center;
+        margin-top: 80px;
+    }
+
+    #photo-album {
+        margin: 80px 50px;
+        flex-wrap: wrap;
+    }
+}
