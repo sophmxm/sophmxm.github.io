@@ -78,9 +78,9 @@ const projects_preview_list = {
 		img: { src: "resources/previews/peculiarpersuit.jpg", alt: "" },
 		title: "Peculiar Persuit",
 		subtitle: "Animatic",
-		tags: ["Animation", "Video editing", "Sound design"],
+		tags: ["Animation", "Video editing", "Sound design", "Team project"],
 		description: "",
-		has_page: false,
+		has_page: true,
 		featured: false,
 	},
 };
@@ -139,7 +139,7 @@ function addFilenameSuffix(filename) {
 function createHeader() {
 	const nav_links = [
 		{ text: "Sophie Martin", link: "/" },
-		{ text: "My stuff", link: "/" },
+		{ text: "My stuff", link: addFilenameSuffix("/projects") },
 		{ text: "About me", link: addFilenameSuffix("/about-me") },
 		{ text: "Say hi", link: addFilenameSuffix("/contact-me") },
 	];
