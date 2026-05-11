@@ -705,7 +705,7 @@ figcaption {
     right: 0;
     user-select: none;
     pointer-events: none;
-    z-index: 4;
+    z-index: 6;
 
     >div {
         display: inline-block;
