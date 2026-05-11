@@ -479,6 +479,35 @@ function createContactListButtons() {
 	});
 }
 
+function dropdownHeader() {
+	let headers = document.querySelectorAll(".dropdown-header");
+	let content = document.querySelectorAll(".dropdown-content");
+
+	headers.forEach((header, i) => {
+		let span = document.createElement("span")
+		span.innerText = "Check out my ";
+		header.prepend(span);
+
+		let icon = document.createElement("iconify-icon");
+		icon.icon = "mingcute:right-fill";
+		header.prepend(icon);
+
+		header.onclick = () => {
+			if (content[i].classList.contains("hidden")) {
+				content[i].classList.remove("hidden");
+				icon.icon = "mingcute:down-fill";
+				span.style.display = "none";
+			} else {
+				content[i].classList.add("hidden");
+				icon.icon = "mingcute:right-fill";
+				span.style.display = "";
+			}
+		};
+	});
+}
+
+dropdownHeader();
+
 if (isWidth1024()) {
 	let img_lists = document.querySelectorAll(".img-grid.previewable, .img-flex.previewable");
 	// For each image list, run function

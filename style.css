@@ -325,9 +325,7 @@ h1 {
     }
 }
 
-#my-stuff {
-    
-}
+#my-stuff {}
 
 #projects-preview[data-scroll-direction="v-scroll"] {
     position: relative;
@@ -479,6 +477,7 @@ body#project main {
     >img {
         width: 100%;
         border-radius: 5px;
+        box-sizing: border-box;
         transition: 350ms;
     }
 
@@ -549,6 +548,7 @@ body#project main {
         height: 300px;
         object-fit: cover;
         border-radius: 5px;
+        box-sizing: border-box;
         transition: 350ms;
     }
 
@@ -671,6 +671,25 @@ figcaption {
     }
 }
 
+.dropdown-header {
+    cursor: pointer;
+
+    >iconify-icon {
+        margin-right: 5px;
+        transform: translateY(2px);
+    }
+}
+
+.dropdown-content {
+    height: auto;
+    overflow-y: hidden;
+    transition: 500ms;
+
+    &.hidden {
+        height: 0;
+    }
+}
+
 #mouse-shapes {
     position: fixed;
     top: 0;
@@ -788,6 +807,7 @@ figcaption {
 
 /* Targets tablets in landscape mode */
 @media only screen and (max-width: 1024px) {
+
     header>nav,
     footer>div {
         padding: 20px 30px;
