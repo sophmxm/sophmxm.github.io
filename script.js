@@ -56,15 +56,6 @@ const projects_preview_list = {
 		has_page: true,
 		featured: true,
 	},
-	reactapp: {
-		img: { src: "resources/previews/reactapp.png", alt: "" },
-		title: "React App",
-		subtitle: "React + REST API",
-		tags: ["React", "REST API"],
-		description: "A React-based web app that allows users to view and analyse data about volcanoes via a REST API.",
-		has_page: true,
-		featured: true,
-	},
 	whosays: {
 		img: { src: "resources/previews/whosays.png", alt: "" },
 		title: "Who says?",
@@ -82,6 +73,15 @@ const projects_preview_list = {
 		description: "An animatic for a chosen story adaptation, complete with a production bible.",
 		has_page: true,
 		featured: true,
+	},
+	reactapp: {
+		img: { src: "resources/previews/reactapp.png", alt: "" },
+		title: "React App",
+		subtitle: "React + REST API",
+		tags: ["React", "REST API"],
+		description: "A React-based web app that allows users to view and analyse data about volcanoes via a REST API.",
+		has_page: true,
+		featured: false,
 	},
 };
 
