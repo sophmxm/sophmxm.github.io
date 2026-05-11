@@ -75,10 +75,10 @@ const projects_preview_list = {
 		featured: true,
 	},
 	peculiarpersuit: {
-		img: { src: "", alt: "" },
-		title: "",
-		subtitle: "",
-		tags: [],
+		img: { src: "resources/previews/peculiarpersuit.jpg", alt: "" },
+		title: "Peculiar Persuit",
+		subtitle: "Animatic",
+		tags: ["Animation", "Video editing", "Sound design"],
 		description: "",
 		has_page: false,
 		featured: false,
@@ -95,13 +95,17 @@ createSocialIconsList();
 
 // If projects preview exists on page, run functions after delay/page loads
 if (projects_preview != null && projects_preview != undefined) {
-	createProjectsPreview();
+	if (projects_preview.dataset.featuredOnly == "true") {
+		createProjectsPreview(true);
+	} else {
+		createProjectsPreview(false);
+	}
 
 	// Check window width and scroll direction
 	if (window.innerWidth > 1024 && projects_preview.dataset.scrollDirection == "h-scroll") {
 		// Create two more copies for infinite scroll
 		for (let i = 0; i < 2; i++) {
-			createProjectsPreview();
+			createProjectsPreview(true);
 		}
 
 		setTimeout(() => {
@@ -223,52 +227,54 @@ function revealElement() {
 	});
 }
 
-function createProjectsPreview() {
+function createProjectsPreview(featured_only) {
 	let container = projects_preview.children[0];
 
 	Object.values(projects_preview_list).forEach((item, i) => {
-		let link = document.createElement("a");
-		if (item.has_page == true) link.href = `/projects/${addFilenameSuffix(Object.keys(projects_preview_list)[i])}`;
-		else link.href = "#";
-		container.appendChild(link);
+		if ((featured_only == true && item.featured == true) || featured_only == false) {
+			let link = document.createElement("a");
+			if (item.has_page == true) link.href = `/projects/${addFilenameSuffix(Object.keys(projects_preview_list)[i])}`;
+			else link.href = "#";
+			container.appendChild(link);
 
-		let image = document.createElement("img");
-		image.src = item.img.src;
-		image.alt = item.img.alt;
-		link.appendChild(image);
+			let image = document.createElement("img");
+			image.src = item.img.src;
+			image.alt = item.img.alt;
+			link.appendChild(image);
 
-		if (item.title != null && item.tags != null && item.description != null) {
-			let overlay = document.createElement("div");
-			link.appendChild(overlay);
+			if (item.title != null && item.tags != null && item.description != null) {
+				let overlay = document.createElement("div");
+				link.appendChild(overlay);
 
-			let heading = document.createElement("div");
-			overlay.appendChild(heading);
+				let heading = document.createElement("div");
+				overlay.appendChild(heading);
 
-			let title = document.createElement("h3");
-			title.innerText = item.title;
-			heading.appendChild(title);
+				let title = document.createElement("h3");
+				title.innerText = item.title;
+				heading.appendChild(title);
 
-			if (item.subtitle != null && item.subtitle != "") {
-				let subtitle = document.createElement("span");
-				subtitle.innerText = item.subtitle;
-				heading.appendChild(subtitle);
+				if (item.subtitle != null && item.subtitle != "") {
+					let subtitle = document.createElement("span");
+					subtitle.innerText = item.subtitle;
+					heading.appendChild(subtitle);
+				}
+
+				let list = document.createElement("ul");
+				list.classList.add("tags");
+				overlay.appendChild(list);
+
+				if (item.tags != null) {
+					item.tags.forEach((tag) => {
+						let list_item = document.createElement("li");
+						list_item.innerText = tag;
+						list.appendChild(list_item);
+					});
+				}
+
+				let description = document.createElement("p");
+				description.innerText = item.description;
+				overlay.appendChild(description);
 			}
-
-			let list = document.createElement("ul");
-			list.classList.add("tags");
-			overlay.appendChild(list);
-
-			if (item.tags != null) {
-				item.tags.forEach((tag) => {
-					let list_item = document.createElement("li");
-					list_item.innerText = tag;
-					list.appendChild(list_item);
-				});
-			}
-
-			let description = document.createElement("p");
-			description.innerText = item.description;
-			overlay.appendChild(description);
 		}
 	});
 }
@@ -499,7 +505,7 @@ function dropdownHeader() {
 	let content = document.querySelectorAll(".dropdown-content");
 
 	headers.forEach((header, i) => {
-		let span = document.createElement("span")
+		let span = document.createElement("span");
 		span.innerText = "Check out my ";
 		header.prepend(span);
 
