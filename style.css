@@ -597,6 +597,12 @@ div:has(iframe) {
     }
 }
 
+iframe.aspect-ratio-16-9 {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+}
+
 #controls-grid-list {
     >li {
         >span {
@@ -894,7 +900,8 @@ figcaption {
 
     .img-grid {
 
-        &.col-2, &.col-3 {
+        &.col-2,
+        &.col-3 {
             grid-template-columns: 1fr;
 
             >figcaption {
