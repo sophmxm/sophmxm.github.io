@@ -891,4 +891,42 @@ figcaption {
         flex-direction: column;
         gap: 20px;
     }
+
+    .img-grid {
+
+        &.col-2, &.col-3 {
+            grid-template-columns: 1fr;
+
+            >figcaption {
+                grid-column: auto;
+            }
+        }
+
+        &.span-3,
+        &.span-5,
+        &.span-7 {
+            grid-template-columns: 1fr;
+
+            >img {
+                grid-column: 1;
+            }
+        }
+    }
+
+    .img-flex {
+
+        &.keep-aspect {
+            flex-wrap: wrap;
+        }
+
+        &:has(>figcaption) {
+            &.col-4>img {
+                width: 100%;
+            }
+
+            &.col-5>img {
+                width: 100%;
+            }
+        }
+    }
 }
