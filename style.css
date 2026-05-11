@@ -84,11 +84,6 @@ body {
     min-height: 100vh;
 }
 
-html:has(body#home),
-body#home {
-    overflow: hidden;
-}
-
 ::selection {
     color: white;
     background-color: var(--colour-primary);
@@ -131,7 +126,7 @@ header {
     top: 0;
     width: 100vw;
     background-color: var(--colour-background);
-    z-index: 2;
+    z-index: 5;
 
     >nav {
         >ul {
@@ -205,81 +200,16 @@ main {
     align-items: center;
 }
 
-body#home,
 body:has(>main.span) {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-body#home main,
 main.span {
     display: flex;
     justify-content: center;
     margin-top: 100px;
-}
-
-body#home main {
-    >div:has(h1) {
-        width: 100%;
-        margin-left: 150px;
-
-        >h1 {
-            display: inline-block;
-
-            +p {
-                display: inline-block;
-                margin-left: 15px;
-                transform: translateY(-6px);
-            }
-
-            +p+p {
-                font-size: 32px;
-                margin: 0;
-                font-weight: bold;
-            }
-        }
-
-        >div {
-            width: 500px;
-            color: #aaa;
-            line-height: 18px;
-
-            >p>span {
-                color: var(--colour-text);
-            }
-        }
-
-        >div {
-            display: flex;
-            gap: 10px;
-        }
-
-        ul {
-            list-style: none;
-            padding-inline-start: 0;
-            color: var(--colour-primary-dark);
-            display: flex;
-            gap: 8px;
-            text-transform: capitalize;
-
-            >li {
-                padding: 5px 10px;
-                color: var(--colour-text);
-                background-color: var(--colour-background);
-                border: 1px var(--colour-text) solid;
-                border-radius: 10px;
-                cursor: default;
-                user-select: none;
-
-                &:hover {
-                    background-color: var(--colour-primary);
-                    color: var(--colour-background);
-                    border-color: var(--colour-primary);
-                }
-            }
-        }
-    }
 }
 
 body#about-me div:has(>h1) {
@@ -951,12 +881,6 @@ figcaption {
 
 /* Targets tablets in landscape mode */
 @media only screen and (max-width: 1024px) {
-
-    html:has(body#home),
-    body#home {
-        overflow: auto;
-    }
-
     header>nav,
     footer>div {
         padding: 20px 30px;
@@ -1046,15 +970,6 @@ figcaption {
 
 /* Targets mobile devices in portrait mode */
 @media only screen and (max-width: 480px) {
-    body#home main>div:has(h1) {
-        margin-left: 0;
-        text-align: center;
-
-        >div {
-            width: auto;
-        }
-    }
-
     footer>div {
         flex-direction: column;
         gap: 20px;
