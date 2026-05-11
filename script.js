@@ -78,10 +78,10 @@ const projects_preview_list = {
 		img: { src: "resources/previews/peculiarpersuit.jpg", alt: "" },
 		title: "Peculiar Persuit",
 		subtitle: "Animatic",
-		tags: ["Animation", "Video editing", "Sound design", "Team project"],
-		description: "",
+		tags: ["Animation", "Video editing", "Sound design", "VFX art", "Motion design", "Team project"],
+		description: "An animatic for a chosen story adaptation, complete with a production bible.",
 		has_page: true,
-		featured: false,
+		featured: true,
 	},
 };
 
