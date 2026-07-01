@@ -897,6 +897,10 @@ figcaption {
     footer>div {
         flex-direction: column;
         gap: 20px;
+
+        >p {
+            text-align: center;
+        }
     }
 
     .img-grid {
