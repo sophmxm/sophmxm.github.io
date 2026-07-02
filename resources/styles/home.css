@@ -73,6 +73,23 @@ main {
     }
 }
 
+#typewriter {
+    border-right: 3px solid var(--colour-text);
+    animation: blink-caret 1000ms step-end infinite;
+}
+
+@keyframes blink-caret {
+
+    from,
+    to {
+        border-color: transparent;
+    }
+
+    50% {
+        border-color: var(--colour-text);
+    }
+}
+
 /* Targets tablets in landscape mode */
 @media only screen and (max-width: 1024px) {
 
@@ -82,8 +99,8 @@ main {
     }
 }
 
-/* Targets mobile devices in portrait mode */
-@media only screen and (max-width: 480px) {
+/* Targets mobile devices in landscape mode */
+@media only screen and (max-width: 600px) {
     main>div:has(h1) {
         margin-left: 0;
         text-align: center;
