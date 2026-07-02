@@ -724,6 +724,11 @@ figcaption {
     }
 }
 
+#typewriter {
+    border-right: 3px solid var(--colour-text);
+    animation: blink-caret 1000ms step-end infinite;
+}
+
 /* Border */
 #border {
     position: fixed;
@@ -809,6 +814,18 @@ figcaption {
     to {
         transform: translateY(0);
         opacity: 1;
+    }
+}
+
+@keyframes blink-caret {
+
+    from,
+    to {
+        border-color: transparent;
+    }
+
+    50% {
+        border-color: var(--colour-text);
     }
 }
 

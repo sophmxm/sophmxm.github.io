@@ -5,6 +5,7 @@ const main = document.getElementsByTagName("main")[0];
 const header = document.getElementsByTagName("header")[0];
 const footer = document.getElementsByTagName("footer")[0];
 let projects_preview = document.getElementById("projects-preview");
+let typewriter = document.getElementById("typewriter");
 
 // Global variables
 let over_1024;
@@ -13,11 +14,17 @@ let over_1024;
 let mouse_shapes_enabled = true;
 let add_html_suffix = false;
 
+// Typewriter variables
+let next_text_i = 0;
+let is_deleting = true;
+
 // Arrays and objects
 const social_links = [
 	{ type: "email", text: "sophmxm@gmail.com", link: "mailto:sophmxm@gmail.com", icon: "ic:round-email" },
 	{ type: "linkedin", text: "linkedin.com/sophmxm", link: "https://www.linkedin.com/in/sophmxm/", icon: "mdi:linkedin" },
 ];
+
+const me_designer_text = ["interaction designer", "UI / UX designer", "visual designer", "frontend developer", "creative coder"];
 
 const projects_preview_list = {
 	template: {
@@ -117,6 +124,8 @@ if (projects_preview != null && projects_preview != undefined) {
 if (document.getElementById("contact-list-btns") != null && document.getElementById("contact-list-btns") != undefined) {
 	createContactListButtons();
 }
+
+if (typewriter != null) typewriterEffect();
 
 revealElement();
 
@@ -606,3 +615,49 @@ function mouseClickShapes(e) {
 }
 
 document.addEventListener("click", mouseClickShapes);
+
+function typewriterEffect() {
+	// Delay to avoid typing too soon
+	setTimeout(() => {
+		if (is_deleting) {
+			// Pause before deleting
+			setTimeout(() => {
+				// For each letter
+				for (let i = 0; i < typewriter.innerText.length; i++) {
+					// Delay each letter
+					setTimeout(() => {
+						// Remove next letter
+						typewriter.textContent = typewriter.innerText.slice(0, -1);
+
+						// If text has reached end
+						if (me_designer_text[next_text_i].length == i + 1) {
+							// Set to next text
+							next_text_i += 1;
+							next_text_i = next_text_i % me_designer_text.length;
+							is_deleting = false;
+							// Run function again
+							typewriterEffect();
+						}
+					}, 100 * i);
+				}
+			}, 2000);
+		} else {
+			// For each letter
+			for (let i = 0; i < me_designer_text[next_text_i].length; i++) {
+				// Delay each letter
+				setTimeout(() => {
+					// Add next letter
+					typewriter.textContent += me_designer_text[next_text_i][i];
+
+					// If text has reached end
+					if (me_designer_text[next_text_i].length == i + 1) {
+						// Set to remove text
+						is_deleting = true;
+						// Run function again
+						typewriterEffect();
+					}
+				}, 100 * i);
+			}
+		}
+	}, 200);
+}
