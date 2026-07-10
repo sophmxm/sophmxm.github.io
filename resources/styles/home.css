@@ -12,8 +12,9 @@ main {
     margin-top: 100px;
 
     >div:has(h1) {
-        width: 100%;
-        margin-left: 150px;
+        align-self: flex-start;
+        margin-left: 80px;
+        cursor: default;
 
         >h1 {
             display: inline-block;
@@ -35,9 +36,22 @@ main {
             width: 500px;
             color: #aaa;
             line-height: 18px;
+            transition: 350ms;
 
             >p>span {
                 color: var(--colour-text);
+                transition: 350ms;
+            }
+        }
+
+        &:hover {
+            >div {
+                color: var(--colour-text);
+
+                >p>span {
+                    color: var(--colour-background);
+                    background-color: var(--colour-primary);
+                }
             }
         }
 
