@@ -237,7 +237,7 @@ function revealElement() {
 	});
 }
 
-function createProjectsPreview(featured_only) {
+function createProjectsPreview(featured_only, main_view) {
 	let container = projects_preview.children[0];
 
 	Object.values(projects_preview_list).forEach((item, i) => {
@@ -250,7 +250,13 @@ function createProjectsPreview(featured_only) {
 			let image = document.createElement("img");
 			image.src = item.img.src;
 			image.alt = item.img.alt;
+			image.width = 444.45;
+			image.height = 250;
 			link.appendChild(image);
+
+			if (i <= 2) {
+				image.loading = "eager";
+			} else image.loading = "lazy";
 
 			if (item.title != null && item.tags != null && item.description != null) {
 				let overlay = document.createElement("div");
