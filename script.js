@@ -89,7 +89,16 @@ const projects_preview_list = {
 		tags: ["React", "REST API"],
 		description: "A React-based web app that allows users to view and analyse data about volcanoes via a REST API.",
 		has_page: true,
-		featured: false,
+		featured: true,
+	},
+	cutestickynotes: {
+		img: { src: "resources/previews/cutestickynotes.png", alt: "" },
+		title: "Cute Sticky Notes",
+		subtitle: "Svelte + Go Wails",
+		tags: ["Svelte", "Go", "Wails", "JavaScript", "HTML and CSS"],
+		description: "A small, simple desktop notes application made in Wails with Go and Svelte.",
+		has_page: true,
+		featured: true,
 	},
 };
 

@@ -545,6 +545,20 @@ body#project main {
         }
     }
 
+    &.h-400 {
+        >img {
+            height: 400px;
+        }
+    }
+
+    &.h-500 {
+        >img {
+            max-height: 500px;
+            height: 100%;
+            max-width: 100%;
+        }
+    }
+
     >img {
         height: 300px;
         object-fit: cover;
@@ -748,7 +762,7 @@ figcaption {
     justify-content: center;
     background-color: #00000050;
     backdrop-filter: blur(1px);
-    z-index: 3;
+    z-index: 6;
 }
 
 .img-preview>img {
@@ -859,6 +873,10 @@ figcaption {
                 }
             }
         }
+    }
+
+    .img-flex {
+        flex-wrap: wrap;
     }
 }
 
