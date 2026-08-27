@@ -195,7 +195,7 @@ function createFooter() {
 	let link_resume = document.createElement("a");
 	link_resume.innerText = "download my resume";
 	link_resume.target = "_blank";
-	link_resume.href = "/resources/documents/CV.pdf";
+	link_resume.href = "/resources/documents/CV v3 3.pdf";
 
 	p.innerText = "Come say hi! ";
 	p.appendChild(link_contact);
