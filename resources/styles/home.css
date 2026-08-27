@@ -6,6 +6,12 @@ body {
     justify-content: space-between;
 }
 
+#typewriter {
+    font-size: 32px;
+    margin: 0;
+    font-weight: bold;
+}
+
 main {
     display: flex;
     justify-content: center;
@@ -16,20 +22,20 @@ main {
         margin-left: 80px;
         cursor: default;
 
+        span:has(>h1) {
+            display: flex;
+            gap: 10px;
+            align-items: end;
+
+            >p {
+                display: inline-block;
+                margin: 0;
+                transform: translateY(-9px);
+            }
+        }
+
         >h1 {
             display: inline-block;
-
-            +p {
-                display: inline-block;
-                margin-left: 15px;
-                transform: translateY(-6px);
-            }
-
-            +p+p {
-                font-size: 32px;
-                margin: 0;
-                font-weight: bold;
-            }
         }
 
         >div {
@@ -121,6 +127,10 @@ main {
 
         >div {
             width: auto;
+        }
+
+        span:has(>h1) {
+            justify-content: center;
         }
     }
 }

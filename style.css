@@ -1,4 +1,18 @@
 @font-face {
+    font-family: "Arial Nova";
+    src: url(./resources/assets/fonts/arial\ nova/ArialNova.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Bright Retro";
+    src: url(./resources/assets/fonts/bright/Bright\ DEMO.otf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
     font-family: "Bubble Boop";
     src: url(./resources/assets/fonts/bubble_boop/BubbleBoop-Regular.ttf);
     font-weight: normal;
@@ -62,16 +76,16 @@
 }
 
 :root {
-    --colour-background: #ffffff;
+    --colour-background: #fff8ef;
     --colour-background-dark: #dddddd;
     --colour-text: #000000;
     --colour-text-light: #777777;
     --colour-text-lighter: #aaaaaa;
-    --colour-primary: #8da83f;
-    --colour-primary-dark: #668118;
+    --colour-primary: #8c4df8;
+    --colour-primary-dark: #6d2ddb;
 
-    --font-main: "Cousine", "Lucida Console", monospace;
-    --font-header-1: "Bubble Boop", cursive;
+    --font-main: "Arial Nova", "Lucida Console", monospace;
+    --font-header-1: "Bright Retro", cursive;
     --font-header-2: "Vividly", cursive;
 }
 
@@ -82,6 +96,7 @@ body {
     font-size: 14px;
     position: relative;
     min-height: 100vh;
+    background-color: var(--colour-background);
 }
 
 ::selection {
@@ -152,7 +167,7 @@ header {
 
             >li:first-of-type {
                 flex-grow: 1;
-                text-transform: uppercase;
+                text-transform: lowercase;
                 font-family: var(--font-header-1);
                 font-size: 20px;
 
@@ -217,6 +232,7 @@ h1 {
     font-size: 36px;
     color: var(--colour-primary);
     margin: 0;
+    text-transform: lowercase;
 
     >span {
         font-family: var(--font-header-2);
@@ -224,7 +240,8 @@ h1 {
         color: var(--colour-text);
         font-weight: normal;
         display: inline-block;
-        transform: translateY(-3px);
+        margin-right: 10px;
+        transform: translateY(-2px);
     }
 }
 
