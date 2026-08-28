@@ -112,6 +112,7 @@ main:not(.no-animation)>* {
 a {
     color: var(--colour-primary);
     text-decoration: underline;
+    transition: 150ms;
 
     &:hover {
         font-style: italic;
@@ -150,6 +151,7 @@ header {
 
             >li:not(:first-of-type)>a {
                 color: var(--colour-text);
+                transition: 150ms;
 
                 &:hover {
                     font-style: italic;
@@ -160,15 +162,17 @@ header {
 
             >li:first-of-type {
                 flex-grow: 1;
-                text-transform: lowercase;
-                font-family: var(--font-header-1);
-                font-size: 20px;
 
                 >a {
+                    text-transform: lowercase;
+                    font-family: var(--font-header-1);
+                    font-size: 20px;
                     color: var(--colour-primary);
+                    transition: 350ms;
 
                     &:hover {
                         font-style: normal;
+                        color: var(--colour-primary-dark);
                     }
                 }
             }
@@ -433,9 +437,7 @@ body#project main {
     }
 
     >section>p {
-        font-size: 13px;
         line-height: 18px;
-        letter-spacing: -0.6px;
     }
 
     section>ul:not(.tags) {
