@@ -342,8 +342,6 @@ h1 {
     }
 }
 
-#my-stuff {}
-
 #projects-preview[data-scroll-direction="v-scroll"] {
     position: relative;
     height: auto;
@@ -647,6 +645,14 @@ iframe.aspect-ratio-16-9 {
 
 .center {
     text-align: center;
+}
+
+.primary-col {
+    color: var(--colour-primary-dark);
+}
+
+.light-col {
+    color: var(--colour-text-light);
 }
 
 figcaption {

@@ -22,10 +22,6 @@ main section {
         margin: 20px 0;
     }
 
-    & h3.purple {
-        color: var(--colour-primary-dark);
-    }
-
     >p>b {
         transition: 350ms;
     }
