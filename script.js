@@ -20,9 +20,9 @@ let is_deleting = true;
 
 // Arrays and objects
 const social_links = [
-	{ type: "email", text: "sophmxm@gmail.com", link: "mailto:sophmxm@gmail.com", icon: "ic:round-email" },
-	{ type: "linkedin", text: "linkedin.com/sophmxm", link: "https://www.linkedin.com/in/sophmxm/", icon: "mdi:linkedin" },
-	{ type: "github", text: "github.com/sophmxm", link: "https://github.com/sophmxm", icon: "mingcute:github-fill" },
+	{ type: "Email", text: "sophmxm@gmail.com", link: "mailto:sophmxm@gmail.com", icon: "ic:round-email" },
+	{ type: "LinkedIn", text: "linkedin.com/sophmxm", link: "https://www.linkedin.com/in/sophmxm/", icon: "mdi:linkedin" },
+	{ type: "Github", text: "github.com/sophmxm", link: "https://github.com/sophmxm", icon: "mingcute:github-fill" },
 ];
 
 const me_designer_text = ["interaction designer", "UI / UX designer", "visual designer", "frontend developer", "creative coder"];
@@ -223,6 +223,7 @@ function createSocialIconsList() {
 			let link = document.createElement("a");
 			link.href = item.link;
 			link.target = "_blank";
+			link.title = item.type;
 			list_item.appendChild(link);
 
 			let icon = document.createElement("iconify-icon");
