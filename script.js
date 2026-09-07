@@ -160,6 +160,7 @@ function createHeader() {
 		{ text: "Sophie Martin", link: "/" },
 		{ text: "My stuff", link: addFilenameSuffix("/projects") },
 		{ text: "About me", link: addFilenameSuffix("/about-me") },
+		{ text: "Resume", link: "/resources/documents/CV v3 3.pdf", target: "_black" },
 		{ text: "Say hi", link: addFilenameSuffix("/contact-me") },
 	];
 
@@ -176,6 +177,7 @@ function createHeader() {
 		let link = document.createElement("a");
 		link.innerText = item.text;
 		link.href = item.link;
+		if (item.target != null) link.target = item.target;
 		list_item.appendChild(link);
 	});
 }
