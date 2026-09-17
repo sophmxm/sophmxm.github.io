@@ -737,14 +737,16 @@ hr {
 
 #back-to-top {
     appearance: none;
+    display: block;
     font-family: var(--font-main);
     font-size: 14px;
     font-weight: normal;
     border: 1px solid var(--colour-primary);
-    border-radius: 5px;
+    border-radius: 10px;
     color: var(--colour-background);
     background-color: var(--colour-primary);
     padding: 8px 10px;
+    margin: 50px;
     cursor: pointer;
     transition: 350ms;
 
