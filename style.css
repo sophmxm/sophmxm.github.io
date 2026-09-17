@@ -498,7 +498,7 @@ body#project main {
     &.col-2 {
         grid-template-columns: 1fr 1fr;
 
-        >figcaption {
+        >img+figcaption:not(:has(+figcaption)) {
             grid-column: span 2;
         }
     }
@@ -520,6 +520,20 @@ body#project main {
 
         >img:nth-child(3) {
             grid-column: auto / span 2;
+        }
+
+        &.reverse {
+            >img:nth-child(3) {
+                grid-column: auto;
+            }
+
+            >img:nth-child(1) {
+                grid-column: auto / span 2;
+            }
+        }
+
+        >figcaption {
+            grid-column: span 2;
         }
 
     }
@@ -710,6 +724,29 @@ figcaption {
         >a>iconify-icon {
             margin-right: 5px;
         }
+    }
+}
+
+hr {
+    border: 1px solid var(--colour-text);
+}
+
+#back-to-top {
+    appearance: none;
+    font-family: var(--font-main);
+    font-size: 14px;
+    font-weight: normal;
+    border: 1px solid var(--colour-primary);
+    border-radius: 5px;
+    color: var(--colour-background);
+    background-color: var(--colour-primary);
+    padding: 8px 10px;
+    cursor: pointer;
+    transition: 350ms;
+
+    &:hover {
+        color: var(--colour-primary-dark);
+        background-color: var(--colour-background);
     }
 }
 
