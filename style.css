@@ -82,6 +82,10 @@
     --font-header-2: "Vividly", "Bright Retro", cursive;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
     padding: 0;

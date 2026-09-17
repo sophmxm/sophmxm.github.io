@@ -680,3 +680,7 @@ function typewriterEffect() {
 		}
 	}, 200);
 }
+
+function backToTop() {
+	window.scrollTo(0, 0);
+}
