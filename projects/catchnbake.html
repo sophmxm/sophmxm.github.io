@@ -31,9 +31,10 @@
             </p>
         </section>
 
-        <div class="img-grid col-2 previewable">
+        <div class="img-grid span-3 previewable">
             <img src="images/catchnbake/controlstutorial.png" alt="">
             <img src="images/catchnbake/game_1.png" alt="">
+            <img src="images/catchnbake/sketch.gif" alt="">
             <img src="images/catchnbake/game_2.png" alt="">
             <img src="images/catchnbake/gameover.png" alt="">
         </div>
@@ -80,6 +81,107 @@
         <section>
             <p class="center">This minigame was exhibited at QUT Creative Coding Exhibition on Bakery Lane and Winn Lane in Fortitude Valley!</p>
         </section>
+
+        <section>
+            <h2>Process</h2>
+            <hr>
+            <h3>Design and aesthetic choices</h3>
+            <p>For this sketch's theme, the idea of a game where you catch ingredients to bake a cake came from the brief. As the cabinets may be located on Bakery Lane, I took inspiration from that, inserting baking-themed elements into my sketch.</p>
+            <p>In terms of the interaction and the game's controls, I chose the Louie cabinet (joystick and three buttons) for its simplicity as my sketch idea was a game with simple enough and easy-to-learn controls.</p>
+            <p>For the sketch's visual design and aesthetic, I wanted a cute stylised game with a warm and homey feel or vibe. To achieve this, I first made myself a mood board using Pinterest, as shown below.</p>
+
+            <div class="img-grid">
+                <img src="images/catchnbake/moodboard.png" alt="">
+                <figcaption>The moodboard</figcaption>
+            </div>
+
+            <p>I had saved a lot of chibi-styled artworks that had that cute look to them as well as some works that used a lot of warm tones. In particular, I largely referenced the two images at the bottom, second and third from the left, taking inspiration from their texture and lineart and the colours that they used.</p>
+
+            <h3>Approach to the design process</h3>
+            <p>To start with this assignment, I first read the brief before brainstorming and noting down potential ideas that I could create, as shown below.</p>
+            <p>I then chose my idea and sketched with pen on paper some notes and additional ideas and features that I could add to it.</p>
+
+            <div class="img-flex col-2 previewable">
+                <img src="images/catchnbake/ideas.png" alt="">
+                <img src="images/catchnbake/notes.jpg" alt="">
+                <figcaption>Brainstorming notes</figcaption>
+                <figcaption>Sketches and ideas</figcaption>
+            </div>
+
+            <h3>Coding in p5.js</h3>
+            <p>After brainstorming and ideating, I moved on to coding. I wrote some very basic code, using object classes to create the movable character and the randomised items that fell.</p>
+            <p>I added catcher and item collision so that whenever the item would come within the bounds of the square catcher, the item would disappear and be added to the caught array.</p>
+            <p>For movement, I had first used some very basic code, but with the help of a public sketch that used velocity, acceleration and mass, I managed to create a smoother movement that started slow and sped up over time.</p>
+
+            <div class="img-grid col-2">
+                <img src="images/catchnbake/sketch_1.png" alt="">
+                <img src="images/catchnbake/sketch_2.gif" alt="">
+                <figcaption>Early progress screenshots</figcaption>
+            </div>
+
+            <p>To display left and right movement better, I added a small face to the character which would then flip whenever the character moved in a different direction.</p>
+            <p>I then added a scoreboard in the top right corner which calculated the score based on the shapes of the items that had been caught in the caught array and added or subtracted points.</p>
+
+            <div class="img-grid">
+                <img src="images/catchnbake/sketch_3.gif" alt="">
+                <figcaption>GIF of early gameplay before illustrations</figcaption>
+            </div>
+
+            <h3>Illustrating</h3>
+            <p>Once I had the basic code down and had made the mood board, I used Krita to draw the art needed for the sketch, starting with the background, which helped to set the tone of the rest of the art needed.</p>
+            <p>I added the background to the sketch and moved on to drawing the items.</p>
+
+            <div class="img-grid span-3 previewable">
+                <img src="images/catchnbake/kitchen_1.png" alt="">
+                <img src="images/catchnbake/kitchen_3.png" alt="">
+                <img src="images/catchnbake/sketch_4.png" alt="">
+                <figcaption>Background illustration progress screenshots</figcaption>
+            </div>
+
+            <p>For the items, I had made a list of the types of things I wanted.</p>
+            <p>The items listed as “good” were the essential ingredients while the items listed as “okay” were meant to allow the user to be able to create different types of cakes. This feature did not end up being added due to the complexity and instead, these items give a small amount of points.</p>
+            <p>Everything listed below that deducts a certain amount of points from the score.</p>
+            <p>These item images replaced the random shapes.</p>
+
+            <div class="img-flex col-2 w-750 h-000 previewable">
+                <img src="images/catchnbake/items.png" alt="" style="width: 20%;">
+                <img src="images/catchnbake/drawing_1.png" alt="" style="width: calc(80% - 10px);">
+                <figcaption>Screenshot of items checklist and of illustration progress</figcaption>
+            </div>
+
+            <p>I then started drawing the sprite of the cat character, using animation tools to help draw in the running keyframes.</p>
+
+            <div class="img-grid">
+                <img src="images/catchnbake/drawing_2.png" alt="">
+                <figcaption>Cat character illustration progress screenshot</figcaption>
+            </div>
+
+            <h3>UI elements</h3>
+            <p>After that, I started to stylise the UI elements, such as the scoreboard and the font, using Gluten and Sniglet taken from Google Fonts. I also added an ingredient list that would cross off ingredients once caught to help users know what they need to catch, and I added a timer in the opposite corner.</p>
+            <p>Additionally, I added text messages on the item that would appear when the user caught an item to help learn what was good and what was bad.</p>
+
+            <div class="img-grid">
+                <img src="images/catchnbake/sketch_5.png" alt="">
+            </div>
+
+            <h3>Final touches</h3>
+            <p>I finally added some background music from Pixabay and a few different popping sound effects that would occur when the user caught something.</p>
+            <p>Once that was finished, I used local storage to add in a high-score system, which I figured would make the game more fun and competitive. In addition to this, I also allowed the user to earn bonus points for completing everything on the ingredients list.</p>
+
+            <div class="img-grid">
+                <img src="images/catchnbake/sketch_6.png" alt="">
+            </div>
+            
+            <p>And lastly, I illustrated the thumbnail that would be used for the cabinet games list.</p>
+
+            <div class="img-flex col-2 w-750 h-000 previewable">
+                <img src="images/catchnbake/drawing_3.png" alt="" style="width: calc(60% - 10px);">
+                <img src="images/catchnbake/thumb.png" alt="" style="width: 40%;">
+                <figcaption>Thumbnail progress (left) and final (right)</figcaption>
+            </div>
+        </section>
+
+        <button id="back-to-top" onclick="backToTop()"><iconify-icon icon="material-symbols:arrow-upward-rounded"></iconify-icon> Back to top <iconify-icon icon="material-symbols:arrow-upward-rounded"></iconify-icon></button>
     </main>
     <footer></footer>
     <div id="border"></div>

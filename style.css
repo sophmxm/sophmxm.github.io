@@ -576,9 +576,20 @@ body#project main {
         }
     }
 
+    &.w-750 {
+        max-width: 750px;
+    }
+
+    &.h-000 {
+        >img {
+            height: auto;
+            width: 100%;
+        }
+    }
+
     &.h-400 {
         >img {
-            height: 400px;
+            max-height: 400px;
         }
     }
 
