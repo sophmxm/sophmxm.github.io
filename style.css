@@ -746,6 +746,10 @@ hr {
     border: 1px solid var(--colour-text);
 }
 
+div.br {
+    height: 50px;
+}
+
 #back-to-top {
     appearance: none;
     display: block;
